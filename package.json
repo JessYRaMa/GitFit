@@ -1,7 +1,7 @@
 {
-  "name": "Project2",
+  "name": "GitFit",
   "version": "1.0.0",
-  "description": "Project2",
+  "description": "GitFit",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
