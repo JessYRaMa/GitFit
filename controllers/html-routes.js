@@ -23,4 +23,7 @@ module.exports = function(app) {
   app.get("/weightlog", function(req, res) {
     res.sendFile(path.join(__dirname, "/../views/weightlog.html"));
   });
+  app.get("/alreadyUser", function(req, res) {
+    res.sendFile(path.join(__dirname, "/../views/alreadyUser.html"));
+  });
 };
