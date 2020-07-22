@@ -7,6 +7,6 @@ CREATE TABLE weight_log(
     weight INTEGER NOT NULL,
     height INTEGER NOT NULL,
     age INTEGER NOT NULL,
-    date DATETIME NOT NULL,
+    date DATETIME,
     PRIMARY KEY(id)
 );
