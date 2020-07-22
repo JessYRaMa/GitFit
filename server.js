@@ -1,13 +1,17 @@
-let exphbs = require ("express-handlebars");
-let PORT = process.env.PORT || 3000;
-let express = require("express");
-let app = express();
+var express = require("express");
+var path = require("path");
 
-app.engine('handlebars', exphbs({defaultLayout: 'index.handlebars'}));
-app.set('view engine', 'handlebars');
+var app = express();
 
-app.get('/', function(error, data){
-    data.render('index.handlebars');
-});
+var PORT = process.env.PORT || 8080;
 
-app.listen(PORT);
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// require("./controllers/api-routes")(app);
+require("./controllers/html-routes")(app);
+
+app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
+  });
