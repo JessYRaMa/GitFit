@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+</head>
+<body>
+    <h1>Create Account</h1>
+    <form method="POST" action="/create">
+        
+        <br><label for="userName">Username</label>
+        <input type="text" name="userName" id="userName" value=""><br>
+        
+        <br><label for="age">Age</label>
+        <input type="number" name="age" id="age" value=""><br>
+
+        <br><label for="gender">Gender</label>
+        <input type="text" name="gender" id="gender" value=""><br>
+        
+        <br><label for="height">Height</label>
+        <input type="number" name="height" id="height" value="">
+        <select name="height" id="heightType">
+            <option value="In">Inches</option>
+            <option value="Cm">Centimeters</option>
+        </select><br>
+        
+        <br><label for="weight">Weight</label>
+        <input type="number" name="weight" id="weight" value="">
+        <select name="weight" id="weightType">
+            <option value="Lbs">Lbs</option>
+            <option value="Kg">Kg</option>
+        </select><br>
+        
+        <br><label for="email">Email</label>
+        <input type="email" id="email" name="email" value=""><br>
+        
+        <br><label for="password">Password</label>
+        <input type="password" id="password" name="password" value=""><br>
+        <br><a href=""><button id="submit">Create</button></a>
+
+    </form><br>
+
+    <br><footer>
+        <a href="./index.html"><button><svg width="100px" height="100px" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+      </svg></button></a>
+    </footer>
+    
+</body>
+</html>
