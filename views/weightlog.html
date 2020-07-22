@@ -14,9 +14,11 @@
             <div class="col-lg-12 offset-1">
                 <div class="chart-container" style="position: relative; height:30vh; width:60vw">
                     <canvas id="myChart"></canvas>
+                    <br>
+                    ADD A NEW ENTRY
                     <div class="input-group mb-3">
                         <input type="date" class="form-control" placeholder="Label" aria-label="Recipient's username" aria-describedby="add" id = "newLabel">
-                        <input type="text" class="form-control" placeholder="Data to Add" aria-label="Recipient's username" aria-describedby="add" id = "data">
+                        <input type="text" class="form-control" placeholder="Weight" aria-label="Recipient's username" aria-describedby="add" id = "data">
                         <div class="input-group-append">
                             <button class = "btn btn-warning" id = "add" onclick = "addData()">Add</button>
                         </div>
@@ -29,6 +31,13 @@
                        </div>
                     </form>
                     <button class = "btn btn-warning" id = "delete" onclick = "removeData()">Delete</button>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="allLogs">
+                                Table will go here with log of entries
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
