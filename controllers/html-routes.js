@@ -26,4 +26,7 @@ module.exports = function(app) {
   app.get("/alreadyUser", function(req, res) {
     res.sendFile(path.join(__dirname, "/../views/alreadyUser.html"));
   });
+  app.get("/calories", function(req, res) {
+    res.sendFile(path.join(__dirname, "/../views/calories.html"));
+  });
 };
