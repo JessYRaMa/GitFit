@@ -6,45 +6,83 @@
     <title>Create Account</title>
     <script src="https://code.jquery.com/jquery.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+	<link rel="stylesheet" href="css/custom.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="css/custom.css" type="text/css" />
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h1>Create Account</h1>
-                        <form method="POST" action="/weightlog">
-                            <br><label for="userName">Username</label>
-                            <input type="text" name="userName" id="userName" value=""><br>
-                    
-                            <br><label for="weight">Weight</label>
-                            <input type="number" name="weight" id="weight" value="">
-                            <select name="weight" id="weightType">
-                                <option value="Lbs">Lbs</option>
-                                <option value="Kg">Kg</option>
-                            </select><br>
-                            
-                            <br><label for="height">Height</label>
-                            <input type="number" name="height" id="height" value="">
-                            <select name="height" id="heightType">
-                                <option value="In">Inches</option>
-                                <option value="Cm">Centimeters</option>
-                            </select><br>
-                    
-                            <br><label for="age">Age</label>
-                            <input type="number" name="age" id="age" value=""><br>
-                    
-                            <br><a href="/weightlog"><button class = "btn btn-primary" id="submit">Create</button></a>
-                        </form><br>
-                        <a href = "/alreadyUser">Already a user? Log in here!</a>
+        <section id = "content">
+            <div class="content-wrap">
+                <div class="form-widget">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-12 form-group">
+                                <h1>Create Account</h1>
+                                <form method="POST" action="/weightlog">
+                                <div class="row">
+                                    <div class="col-sm-2 col-form-label">
+                                        <label for="userName">Username:</label>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="text" name="userName" id="userName" class="form-control required" value="" placeholder="Enter your username">
+                                    </div>
+                                </div>
+                                <div class="col-12 form-group">
+                                    <div class="row">
+                                        <div class="col-sm-2 col-form-label">
+                                            <label for="weight">Weight:</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input type="number" min="10" max="50" name="weight" id="weight" class="form-control required" value="">
+                                            <select name="weight" id="weightType">
+                                                <option value="Lbs">Lbs</option>
+                                                <option value="Kg">Kg</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 form-group">
+                                    <div class="row">
+                                        <div class="col-sm-2 col-form-label">
+                                            <label for="age">Height:</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input type="number" name="height" id="height" class="form-control required" value="">
+                                            <select name="height" id="heightType">
+                                                <option value="In">Inches</option>
+                                                <option value="Cm">Centimeters</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 form-group">
+                                    <div class="row">
+                                        <div class="col-sm-2 col-form-label">
+                                            <label for="age">Age:</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input type="number" name="age" id="age" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/weightlog"><button class = "btn btn-primary" id="submit">Create</button></a>
+                            </form>
+                            </div>        
+                                 <a href = "/alreadyUser">Already a user? Log in here!</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-       
+        </section>    
     </div>
     
     <br><footer>
@@ -53,7 +91,7 @@
         <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
       </svg></button></a>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>   
 </body>
 </html>
