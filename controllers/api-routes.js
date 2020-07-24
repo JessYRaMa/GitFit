@@ -37,7 +37,7 @@ module.exports = function(app) {
   app.post("/weightlog", function(req, res) {
   res.send ("Hello World!")
   // add record to db using weight model to create records
-  // send redirect response to direct to weight_log
+  // send redirect response to direct to /weight_log
   res.redirect()
   })
 
