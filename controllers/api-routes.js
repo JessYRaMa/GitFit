@@ -5,7 +5,6 @@
 // ===============================================================================
 
 var weight = require("../model/weight");
-var newUser = require("../model/new_user");
 
 // ===============================================================================
 // ROUTING
@@ -18,11 +17,42 @@ module.exports = function(app) {
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
 
-  app.get("/api", function(req, res) {
-    res.json(weight);
+  app.get("/api/weight_log", function(req, res) {
+    weight.selectLog("username", function(data){
+      res.json(data);
+      // res.send(data);
+      // res.redirect("/weightlog.html");
+    });
   });
 
+  app.post("/weightlog.html", function(req, res){
+    weight.insertOne(["username", "weight", "height", "age"], [req.body.username, req.body.weight, req.body.height, req.body.age], function(){
+      res.redirect("weightlog.html")
+    })
+  })
 
+  app.put("/:id", function(req,res){
+    var condition = "id = " + req.params.id;
+  
+    console.log("condition", condition);
+  
+    weight.updateOne({
+      weight: req.body.weight
+              }, condition, function() {
+      res.redirect("/weightlog.html");
+    });
+  });
+
+  app.delete("/:id", function(req,res){
+    var condition = "id = " + req.params.id;
+  
+    console.log("condition", condition);
+  
+    weight.deleteOne(condition, function(){
+      res.redirect("/weightlog.html");
+    });
+  });
+  
 
   // API POST Requests
   // Below code handles when a user submits a form and thus submits data to the server.
@@ -30,17 +60,12 @@ module.exports = function(app) {
   // ...the JSON is pushed to the appropriate JavaScript array
   // ---------------------------------------------------------------------------
 
-  app.post("/api/weight", function(req, res) {
-
-  })
-
-  app.post("/weightlog", function(req, res) {
-  res.send ("Hello World!")
+  
+  
   // add record to db using weight model to create records
   // send redirect response to direct to /weight_log
   // res.redirect()
-  })
-
+  
   
 
 }

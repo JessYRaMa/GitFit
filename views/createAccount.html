@@ -27,13 +27,13 @@
                         <div class="col-lg-12">
                             <div class="col-12 form-group">
                                 <h1>Create Account</h1>
-                                <form method="POST" action="/weightlog">
+                                <form method="POST" action="/weightlog.html">
                                 <div class="row">
                                     <div class="col-sm-2 col-form-label">
-                                        <label for="userName">Username:</label>
+                                        <label for="username">Username:</label>
                                     </div>
                                     <div class="col-sm-5">
-                                        <input type="text" name="userName" id="userName" class="form-control required" value="" placeholder="Enter your username">
+                                        <input type="text" name="username" id="username" class="form-control required" value="" placeholder="Enter your username">
                                     </div>
                                 </div>
                                 <div class="col-12 form-group">
@@ -42,11 +42,7 @@
                                             <label for="weight">Weight:</label>
                                         </div>
                                         <div class="col-sm-5">
-                                            <input type="number" min="10" max="50" name="weight" id="weight" class="form-control required" value="">
-                                            <select name="weight" id="weightType">
-                                                <option value="Lbs">Lbs</option>
-                                                <option value="Kg">Kg</option>
-                                            </select>
+                                            <input type="number" min="10" max="300" name="weight" id="weight" class="form-control required" value="">
                                         </div>
                                     </div>
                                 </div>
@@ -57,10 +53,6 @@
                                         </div>
                                         <div class="col-sm-5">
                                             <input type="number" name="height" id="height" class="form-control required" value="">
-                                            <select name="height" id="heightType">
-                                                <option value="In">Inches</option>
-                                                <option value="Cm">Centimeters</option>
-                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -84,6 +76,7 @@
             </div>
         </section>    
     </div>
+    
     
     <br><footer>
         <a href="/"><button><svg width="100px" height="100px" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

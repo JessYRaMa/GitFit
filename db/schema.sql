@@ -9,12 +9,3 @@ CREATE TABLE weight_log(
     age INTEGER NOT NULL,
     PRIMARY KEY(id)
 );
-
-CREATE TABLE new_user(
-    id INT AUTO_INCREMENT NOT NULL,
-    username VARCHAR(50) NOT NULL,
-    weight INTEGER NOT NULL,
-    height INTEGER NOT NULL,
-    age INTEGER NOT NULL,
-    PRIMARY KEY(id)
-);

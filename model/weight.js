@@ -1,8 +1,8 @@
 var orm = require("../config/orm.js");
 
 var weight_log = {
-    selectLog: function(cb) {
-        orm.selectLog("weight_log", function(res) {
+    selectLog: function(val, cb) {
+        orm.selectLog("weight_log",val, function(res) {
           cb(res);
         });
     },

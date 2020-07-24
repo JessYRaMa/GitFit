@@ -11,7 +11,7 @@ if (process.env.JAWSDB_URL) {
         port: 3306,
         host: 'localhost',
         user: 'root',
-        password: 'Adriana01!3',
+        password: 'Cabuntucan1@',
         database: 'weight_db'
     })
 };

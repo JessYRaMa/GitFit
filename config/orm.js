@@ -34,10 +34,8 @@ function objToSql(ob) {
 
   //ORM FOR SQL STATEMENT FUNCTIONS
 var orm = {
-    selectLog: function(tableInput, cb) {
-      var queryString = "SELECT weight_log.username, weight_log.weight FROM weight_log " +
-      "JOIN new_user " + 
-      "WHERE weight_log.username = new_user.username && new_user.username = " + tableInput + ";";
+    selectLog: function(tableInput, val, cb) {
+      var queryString = "SELECT * FROM " + tableInput + " WHERE username = " + val + ";";
       connection.query(queryString, function(err, result) {
         if (err) {
           throw err;
