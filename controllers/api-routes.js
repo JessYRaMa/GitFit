@@ -18,10 +18,26 @@ module.exports = function(app) {
   // ---------------------------------------------------------------------------
 
   app.get("/api/weight", function(req, res) {
-    weight.selectLog("username", function(data){
+    weight.selectAll(function(data){
       res.json(data);
       // res.send(data);
       // res.redirect("/weightlog.html");
+    });
+  });
+  app.get("/api/weight?username=:username", function(req, res) {
+    weight.selectLog(req.params.username, function(data){
+      var chosen = req.params.username;
+
+  console.log(chosen);
+
+  for (var i = 0; i < data.length; i++) {
+    if (chosen === data[i].username) {
+      return res.json(data[i]);
+    }
+  }
+
+  return res.json(false);
+
     });
   });
 

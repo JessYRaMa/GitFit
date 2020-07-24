@@ -34,14 +34,23 @@ function objToSql(ob) {
 
   //ORM FOR SQL STATEMENT FUNCTIONS
 var orm = {
-    selectLog: function(tableInput, val, cb) {
-      var queryString = "SELECT * FROM " + tableInput + " WHERE username = " + val + ";";
-      connection.query(queryString, function(err, result) {
-        if (err) {
-          throw err;
-        }
-        cb(result);
-      });
+  selectAll: function(tableInput, cb) {
+    var queryString = "SELECT * FROM " + tableInput + ";";
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  selectLog: function(tableInput, val, cb) {
+    var queryString = "SELECT * FROM " + tableInput + " WHERE " + val + ";";
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
     },
     insertOne: function(table, cols, vals, cb) {
       var queryString = "INSERT INTO " + table;
