@@ -10,7 +10,7 @@ app.use(express.static('views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// require("./controllers/api-routes")(app);
+require("./controllers/api-routes")(app);
 require("./controllers/html-routes")(app);
 
 app.listen(PORT, function() {

@@ -34,8 +34,10 @@ function objToSql(ob) {
 
   //ORM FOR SQL STATEMENT FUNCTIONS
 var orm = {
-    selectAll: function(tableInput, cb) {
-      var queryString = "SELECT * FROM " + tableInput + ";";
+    selectLog: function(tableInput, cb) {
+      var queryString = "SELECT weight_log.username, weight_log.weight FROM weight_log " +
+      "JOIN new_user " + 
+      "WHERE weight_log.username = new_user.username && new_user.username = " + tableInput + ";";
       connection.query(queryString, function(err, result) {
         if (err) {
           throw err;
@@ -45,7 +47,7 @@ var orm = {
     },
     insertOne: function(table, cols, vals, cb) {
       var queryString = "INSERT INTO " + table;
-      // INSER INTO table_name (burger_name) VALUES (?, ?)
+      // INSER INTO table_name (user_name) VALUES (?, ?)
       queryString += " (";
       queryString += cols.toString();
       queryString += ") ";

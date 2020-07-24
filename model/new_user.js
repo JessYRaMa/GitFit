@@ -1,27 +1,26 @@
 var orm = require("../config/orm.js");
 
-var weight_log = {
+var new_user = {
     selectLog: function(cb) {
-        orm.selectLog("weight_log", function(res) {
+        orm.selectLog("new_user", function(res) {
           cb(res);
         });
     },
     insertOne: function(col,vals,cb){
-        orm.insertOne("weight_log", col, vals, function(res){
+        orm.insertOne("new_user", col, vals, function(res){
           cb(res);
         });
     },
     updateOne: function(objColVals, condition, cb) {
-      orm.updateOne("weight_log", objColVals, condition, function(res) {
+      orm.updateOne("new_user", objColVals, condition, function(res) {
         cb(res);
       });  
     },
     deleteOne: function(condition, cb){
-      orm.deleteOne("weight_log", condition, function(res){
+      orm.deleteOne("new_user", condition, function(res){
         cb(res);
       });
     }
-};
-
-module.exports = weight_log;
-
+  };
+  
+  module.exports = new_user;
