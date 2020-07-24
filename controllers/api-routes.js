@@ -5,7 +5,7 @@
 // ===============================================================================
 
 var weight = require("../model/weight");
-var newUser = require("../model/new_user");
+// var newUser = require("../model/new_user");
 
 // ===============================================================================
 // ROUTING
