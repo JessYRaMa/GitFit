@@ -11,15 +11,51 @@
 <body>
     <div class="container">
         <h1>GitFit</h1>
-        <form method="GET" action="/api/weight_log">
+        <form method="GET" action="/api/weight">
             <h2>Login</h2>
             <label for="username">Username</label>
             <input type="text" id="username" name="username" value=""><br>
             <br><label for="psswrd">Password</label>
             <input type="password" id="psswrd" name="psswrd" value=""> <br>
-            <br><a href = "/weightlog"><button id="login" class = "btn btn-primary">View Log</button></a>
+            <br><button id="login" class = "btn btn-primary">View Log</button>
         </form> 
+
+        <div class="newuser">
+
+        </div>
     </div>
+
+    <script>
+         $.ajax({ url: "/api/weight", method: "GET" })
+      .then(function(tableData) {
+
+        // Here we then log the tableData to console, where it will show up as an object.
+        console.log(tableData);
+        console.log("------------------------------------");
+
+        // Loop through and display each of the customers
+        for (var i = 0; i < tableData.length; i++) {
+
+          // Get a reference to the tableList element and populate it with tables
+          var tableList = $("#newuser");
+
+          // Then display the fields in the HTML (Section Name, Date, URL)
+          var listItem = $("<li class='list-group-item mt-4'>");
+
+          listItem.append(
+            $("<h2>").text("Table #" + (i + 1)),
+            $("<hr>"),
+            $("<h2>").text("ID: " + tableData[i].username),
+            $("<h2>").text("Name: " + tableData[i].weight),
+            $("<h2>").text("Email: " + tableData[i].height),
+            $("<h2>").text("Phone: " + tableData[i].age)
+          );
+
+          tableList.append(listItem);
+        }
+      });
+
+    </script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>   
 </body>

@@ -17,7 +17,7 @@ module.exports = function(app) {
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
 
-  app.get("/api/weight_log", function(req, res) {
+  app.get("/api/weight", function(req, res) {
     weight.selectLog("username", function(data){
       res.json(data);
       // res.send(data);
@@ -25,13 +25,13 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/weightlog.html", function(req, res){
-    weight.insertOne(["username", "weight", "height", "age"], [req.body.username, req.body.weight, req.body.height, req.body.age], function(){
-      res.redirect("weightlog.html")
+  app.post("/api/weight", function(req, res){
+    weight.insertOne(["username", "weight", "height", "age"], [req.body.username, req.body.weight, req.body.height, req.body.age], function(data){
+      res.json(data);
     })
   })
 
-  app.put("/:id", function(req,res){
+  app.put("/api/weight/:id", function(req,res){
     var condition = "id = " + req.params.id;
   
     console.log("condition", condition);
@@ -39,17 +39,19 @@ module.exports = function(app) {
     weight.updateOne({
       weight: req.body.weight
               }, condition, function() {
-      res.redirect("/weightlog.html");
+                res.json();
+      // res.redirect("/api/weight");
     });
   });
 
-  app.delete("/:id", function(req,res){
+  app.delete("/api/weight/:id", function(req,res){
     var condition = "id = " + req.params.id;
   
     console.log("condition", condition);
   
     weight.deleteOne(condition, function(){
-      res.redirect("/weightlog.html");
+      res.json();
+      // res.redirect("/weightlog.html");
     });
   });
   
