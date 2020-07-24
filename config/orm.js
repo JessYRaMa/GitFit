@@ -44,7 +44,7 @@ var orm = {
     });
   },
   selectLog: function(tableInput, val, cb) {
-    var queryString = "SELECT * FROM " + tableInput + " WHERE " + val + ";";
+    var queryString = "SELECT * FROM " + tableInput + " WHERE username = " + val + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;

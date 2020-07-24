@@ -16,34 +16,39 @@ module.exports = function(app) {
   // In each of the below cases when a user visits a link
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
+  var allUsers = [];
 
   app.get("/api/weight", function(req, res) {
     weight.selectAll(function(data){
-      res.json(data);
-      // res.send(data);
-      // res.redirect("/weightlog.html");
+      allUsers.push(data);
+      console.log(allUsers);
+      res.json(allUsers);
     });
   });
-  app.get("/api/weight?username=:username", function(req, res) {
-    weight.selectLog(req.params.username, function(data){
-      var chosen = req.params.username;
 
-  console.log(chosen);
+  // app.get("/api/weight?username=:username", function(req, res) {
+  //   var chosen = req.params.username;
 
-  for (var i = 0; i < data.length; i++) {
-    if (chosen === data[i].username) {
-      return res.json(data[i]);
-    }
-  }
+  //   weight.selectLog(chosen, function(){
+  //     console.log(chosen);
+  //   for (var i = 0; i < allUsers.length; i++) {
+  //     if (chosen === allUsers.username) {
+  //     return res.json(allUsers[i]);
+  //   }
+  // }
 
-  return res.json(false);
+  // return res.json(false);
 
-    });
-  });
+  //   });
+  // });
 
   app.post("/api/weight", function(req, res){
-    weight.insertOne(["username", "weight", "height", "age"], [req.body.username, req.body.weight, req.body.height, req.body.age], function(data){
-      res.json(data);
+    weight.insertOne(["username", "weight", "height", "age"], [req.body.username, req.body.weight, req.body.height, req.body.age], function(){
+      // res.json(data);
+      var newUser = req.body;
+      console.log(newUser);
+      allUsers.push(newUser);
+      res.json(newUser);
     })
   })
 
@@ -77,13 +82,10 @@ module.exports = function(app) {
   // In each of the below cases, when a user submits form data (a JSON object)
   // ...the JSON is pushed to the appropriate JavaScript array
   // ---------------------------------------------------------------------------
-
-  
   
   // add record to db using weight model to create records
   // send redirect response to direct to /weight_log
   // res.redirect()
-  
   
 
 }
