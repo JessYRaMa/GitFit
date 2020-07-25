@@ -24,11 +24,11 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/weight/:username", function(req, res) {
-  weight.selectLog("username",req.params.username, function(data){
-     res.json(data);
-  });
-});
+//   app.get("/api/weight/:username", function(req, res) {
+//   weight.selectLog("username",req.params.username, function(data){
+//      res.json(data);
+//   });
+// });
 
   app.post("/api/weight", function(req, res){
     weight.insertOne(["username", "logged_at", "weight", "height", "age"], [req.body.username, req.body.logged_at, req.body.weight, req.body.height, req.body.age], function(){
