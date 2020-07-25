@@ -36,15 +36,10 @@ function UserDropdown(){
         $('#currentUser').append('<option value="'+users[i]+'">'+users[i]+'</option>');
     };
 }
-// async function reload(){
-//     location.reload();
-// }
-// reload().then(createGraph());
 
  function createGraph(){
     
     var currentUser = $("#currentUser").val().trim();
-
 
     $.get("/api/weight", function(data) {
         console.log(data);
@@ -63,11 +58,24 @@ function UserDropdown(){
     });
 }
 
-// function clearChart(){
-//     myChart.clear();
-//     myChart.reset();
-//     myChart.
-// }
+function resetGraph(){
+    var chartData = myChart.data;
+
+    console.log(chartData.length);
+
+    for(var i=0; i< chartData.labels.length; i++){
+    chartData.datasets[0].data.pop();
+    chartData.labels.pop();
+    }
+    
+    console.log(myChart.data.datasets[0].data);
+    console.log(myChart.data);
+    myChart.update();
+};
+
+$("#deleteGraph").on("click", function(){
+    resetGraph();
+});
 
 //chart creation
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -122,7 +130,6 @@ function addData() {
     //add to labels to dropdown
     $('#dataRemove').append('<option value="'+ newLabel +'">'+ newLabel+'</option>');
 
-
 };
 function submitPost(newPost) {
 
@@ -159,8 +166,6 @@ function removeData() {
     var index = labels.indexOf(toDelete);
     if (index > -1) { labels.splice(index, 1) }
     myChart.update();
-    dropDown();
-    
 }
 
 function deletePost(id) {
