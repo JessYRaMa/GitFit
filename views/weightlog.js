@@ -132,7 +132,12 @@ $("#currentUser").on("change", function(){
  $("#addBtn").on("click",function(){
      event.preventDefault();
      submitPost();
- })   
+ });
+ 
+ $("#submit").on("click", function(){
+     event.preventDefault();
+     submitPost();
+ })
     
 //when add button is clicked
 function addData() {

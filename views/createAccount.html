@@ -27,7 +27,7 @@
                         <div class="col-lg-12">
                             <div class="col-12 form-group">
                                 <h1>Create Account</h1>
-                                <form id = "newAccount" method ="POST" action = "/api/weight">
+                                <form id = "newAccount" onSubmit = "submitPost()">
                                 <div class="row">
                                     <div class="col-sm-2 col-form-label">
                                         <label for="username">Username:</label>
@@ -97,7 +97,38 @@
       </svg></button></a>
     </footer>
 
+
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>   
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>       
+
+<script> 
+    $("#submit").on("click", function(){
+        event.preventDefault();
+        submitPost();
+    });
+    function submitPost(newPost) {
+   
+   var newData = $("#weight");
+   var newage = $("#age");
+   var logged = $("#logged_at");
+   var newuser = $("#username");
+   var newheight = $("#height");
+   
+   var newPost = {
+      username: newuser.val().trim(),
+      logged_at: logged.val().trim(),
+      weight: newData.val().trim(),
+      height: newheight.val().trim(),
+      age: newage.val().trim(),
+    };
+   
+   $.post("/api/weight", newPost, function() {
+    console.log(newPost);
+   });
+
+};
+
+    </script>
+
 </body>
 </html>
