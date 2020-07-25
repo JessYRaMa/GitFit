@@ -91,6 +91,8 @@
                                             Account!</button></a>
                                 </form>
                             </div>
+                            <div class="created-account">
+                            </div><br>
                             <a href="/weightlog.html">Created your account? Start Logging Now!</a>
                             <br><br>
                             <a href="/weightlog.html">Already a GitFit member? Access the logs now. </a>
@@ -122,9 +124,14 @@
         crossorigin="anonymous"></script>
 
     <script>
+
+            var newAccount = $(".created-account");
+            var newuser = $("#username").val().trim();
+
         $("#submit").on("click", function () {
             event.preventDefault();
             submitPost();
+            newAccount.html("<h1>" + "Thanks for joining the GitFit Fam!" + "</h1>");
         });
         function submitPost(newPost) {
             var newData = $("#weight");
@@ -146,4 +153,5 @@
         };
     </script>
 </body>
+
 </html>
