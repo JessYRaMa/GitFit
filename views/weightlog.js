@@ -1,18 +1,37 @@
 var labels = [];
 var dataSet = [];
+var users = [];
 
 function getPostData() {
     $.get("/api/weight", function(data) {
         console.log(data);
         
         for(var i=0; i<data.length; i++){
-            labels.push(data[i].logged_at);
+            labels.push(moment(data[i].logged_at).format('L'));
             dataSet.push(data[i].weight);
+            if(users.indexOf(data[i].username)!== -1){
+                users.push(data[i].username);
+            }
         };
+        dropDown();
+        UserDropdown();
+        myChart.update();
     });
   };
 
   getPostData();
+
+  function dropDown(){
+    for(var i=0; i<labels.length; i++){
+        $('#dataRemove').append('<option value="'+labels[i]+'">'+labels[i]+'</option>');
+    };
+}
+
+function UserDropdown(){
+    for(var i=0; i<users.length; i++){
+        $('#currentUser').append('<option value="'+users[i]+'">'+users[i]+'</option>');
+    };
+}
 
 //chart creation
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -53,15 +72,13 @@ function getPostData() {
   
  $("#addBtn").on("click",function(){
      event.preventDefault();
-
-     addData();
      submitPost();
  })   
     
 
 //when add button is clicked
 function addData() {
-     var newLabel = $("#newLabel").val();
+     var newLabel = moment($("#newLabel").val()).format('L');
      var newData = $("#data").val();
     labels.push(newLabel);
     dataSet.push(newData);
@@ -87,7 +104,7 @@ function submitPost(newPost) {
       };
 
     $.post("/api/weight", newPost, function() {
-      addData();
+      console.log(newPost);
     });
   }
 
@@ -105,6 +122,7 @@ function removeData() {
     var index = labels.indexOf(toDelete);
     if (index > -1) { labels.splice(index, 1) }
     myChart.update();
+    dropDown();
 }
 
 function deletePost(id) {
@@ -113,7 +131,7 @@ function deletePost(id) {
       url: "/api/weight/" + id
     })
       .then(function() {
-        removeData();
+        myChart.update();
       });
   }
 
@@ -122,7 +140,6 @@ function dropDown(){
         $('#dataRemove').append('<option value="'+labels[i]+'">'+labels[i]+'</option>');
     };
 }
-//load the dates into dropdown menu to be deleted
-dropDown();
+
 
 

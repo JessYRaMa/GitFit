@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Tester</title>
+  <title>GitFit | Weight Log</title>
   <script src="https://code.jquery.com/jquery.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
@@ -17,6 +17,14 @@
                     <canvas id="myChart"></canvas>
                     <br>
                     ADD A NEW ENTRY
+                    <form>
+                        <div class="form-group">
+                         <select class="form-control" id="currentUser">
+                             <option value="" disabled selected>Already a User? Select Your Username!</option>
+                         </select>
+                       </div>
+                    </form>
+                    <button class = "btn btn-warning" id = "deleteBtn" onclick = "removeData()">Delete</button>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="username" aria-label="Recipient's username" aria-describedby="add" id = "username">
                         <input type="date" class="form-control" placeholder="Label" aria-label="Recipient's username" aria-describedby="add" id = "newLabel">
