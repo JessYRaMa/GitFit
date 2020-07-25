@@ -3,12 +3,13 @@ var dataSet = [];
 var users = [];
 var dataUse = [];
 
-// var newUser = $("#currentUser").val().trim();
+$("#currentUser").attr("value", "default");
+var newUser = $("#currentUser").val().trim();
 
 function getPostData() {
     $.get("/api/weight", function(data) {
         console.log(data);
-        
+        var newUser = $("#currentUser").val().trim();
         for(var i=0; i<data.length; i++){
             if(data[i].username === newUser){
             labels.push(moment(data[i].logged_at).format('L'));
