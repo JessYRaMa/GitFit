@@ -63,11 +63,14 @@ function resetGraph(){
 
     console.log(chartData.length);
 
-    for(var i=0; i< chartData.labels.length; i++){
-    chartData.datasets[0].data.pop();
-    chartData.labels.pop();
-    }
+    // for(var i=0; i< chartData.labels.length || i<chartData.datasets[0].data.length; i++){
+    // chartData.datasets[0].data.pop();
+    // chartData.labels.pop();
+    // }
     
+    chartData.datasets[0].data = [];
+    chartData.labels = [];
+
     console.log(myChart.data.datasets[0].data);
     console.log(myChart.data);
     myChart.update();
