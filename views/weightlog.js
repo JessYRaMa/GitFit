@@ -3,7 +3,7 @@ var dataSet = [];
 var users = [];
 var dataUse = [];
 
-var newUser = $("#currentUser").val().trim();
+// var newUser = $("#currentUser").val().trim();
 
 function getPostData() {
     $.get("/api/weight", function(data) {
