@@ -9,7 +9,7 @@ function getPostData() {
         for(var i=0; i<data.length; i++){
             labels.push(moment(data[i].logged_at).format('L'));
             dataSet.push(data[i].weight);
-            if(users.indexOf(data[i].username)!== -1){
+            if(users.indexOf(data[i].username) === -1){
                 users.push(data[i].username);
             }
         };
