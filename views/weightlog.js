@@ -2,20 +2,24 @@ var labels = [];
 var dataSet = [];
 var users = [];
 
+var newUser = $("#username").val().trim();
+
 function getPostData() {
     $.get("/api/weight", function(data) {
         console.log(data);
         
         for(var i=0; i<data.length; i++){
+            if(data[i].username === newUser){
             labels.push(moment(data[i].logged_at).format('L'));
             dataSet.push(data[i].weight);
+            };
             if(users.indexOf(data[i].username) === -1){
                 users.push(data[i].username);
             }
         };
-        dropDown();
-        UserDropdown();
         myChart.update();
+       dropDown();
+       UserDropdown();    
     });
   };
 
@@ -32,6 +36,38 @@ function UserDropdown(){
         $('#currentUser').append('<option value="'+users[i]+'">'+users[i]+'</option>');
     };
 }
+// async function reload(){
+//     location.reload();
+// }
+// reload().then(createGraph());
+
+ function createGraph(){
+    
+    var currentUser = $("#currentUser").val().trim();
+
+
+    $.get("/api/weight", function(data) {
+        console.log(data);
+        console.log(currentUser);
+
+        for(var i=0; i<data.length; i++){
+            if(data[i].username === currentUser){
+            labels.push(moment(data[i].logged_at).format('L'));
+            dataSet.push(data[i].weight);
+            };
+            if(users.indexOf(data[i].username) === -1){
+                users.push(data[i].username);
+            }
+        };
+        myChart.update();
+    });
+}
+
+// function clearChart(){
+//     myChart.clear();
+//     myChart.reset();
+//     myChart.
+// }
 
 //chart creation
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -86,6 +122,7 @@ function addData() {
     //add to labels to dropdown
     $('#dataRemove').append('<option value="'+ newLabel +'">'+ newLabel+'</option>');
 
+
 };
 function submitPost(newPost) {
 
@@ -123,6 +160,7 @@ function removeData() {
     if (index > -1) { labels.splice(index, 1) }
     myChart.update();
     dropDown();
+    
 }
 
 function deletePost(id) {
