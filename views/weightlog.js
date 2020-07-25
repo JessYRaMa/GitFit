@@ -60,9 +60,9 @@ function getId(){
             console.log(dataUse[i].id);
             console.log(dataUse);
             console.log((moment(dataUse[i].logged_at).format('L')));
+            console.log("newUser" ,newUser);
+            console.log("toDelete", toDelete);
             if(newUser == dataUse[i].username && toDelete == (moment(dataUse[i].logged_at).format('L'))){
-                console.log("newUser" ,newUser);
-                console.log("toDelete", toDelete);
                     return(dataUse[i].id);
             }
         }
