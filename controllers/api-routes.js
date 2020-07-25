@@ -20,35 +20,23 @@ module.exports = function(app) {
 
   app.get("/api/weight", function(req, res) {
     weight.selectAll(function(data){
-      allUsers.push(data);
-      console.log(allUsers);
-      res.json(allUsers);
+      res.json(data);
     });
   });
 
-  // app.get("/api/weight?username=:username", function(req, res) {
-  //   var chosen = req.params.username;
-
-  //   weight.selectLog(chosen, function(){
-  //     console.log(chosen);
-  //   for (var i = 0; i < allUsers.length; i++) {
-  //     if (chosen === allUsers.username) {
-  //     return res.json(allUsers[i]);
-  //   }
-  // }
-
-  // return res.json(false);
-
-  //   });
-  // });
+  app.get("/api/weight/:username", function(req, res) {
+  weight.selectLog("username",req.params.username, function(data){
+     res.json(data);
+  });
+});
 
   app.post("/api/weight", function(req, res){
-    weight.insertOne(["username", "weight", "height", "age"], [req.body.username, req.body.weight, req.body.height, req.body.age], function(){
+    weight.insertOne(["username", "logged_at", "weight", "height", "age"], [req.body.username, req.body.logged_at, req.body.weight, req.body.height, req.body.age], function(){
       // res.json(data);
       var newUser = req.body;
       console.log(newUser);
       allUsers.push(newUser);
-      res.json(newUser);
+      res.json(allUsers);
     })
   })
 
@@ -87,5 +75,4 @@ module.exports = function(app) {
   // send redirect response to direct to /weight_log
   // res.redirect()
   
-
-}
+  }

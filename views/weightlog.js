@@ -1,15 +1,27 @@
-//dummy data with static data
-var labels = ['2020-03-04', '2020-03-25', '2020-04-08', '2020-05-28', '2020-06-18', '2020-07-04'];
-var dataSet = [100,125,104,108,103,102];
-   
+var labels = [];
+var dataSet = [];
+
+function getPostData() {
+    $.get("/api/weight", function(data) {
+        console.log(data);
+        
+        for(var i=0; i<data.length; i++){
+            labels.push(data[i].logged_at);
+            dataSet.push(data[i].weight);
+        };
+    });
+  };
+
+  getPostData();
+
 //chart creation
-   var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
             datasets: [{
-                label: 'Progress',
+                label: 'Weight',
                 data: dataSet,
                 backgroundColor: '#ffffff00',
                 borderColor: [
@@ -36,19 +48,55 @@ var dataSet = [100,125,104,108,103,102];
                 text: 'Weight Log'
             }
         }
-    });  
+    });
 
+  
+ $("#addBtn").on("click",function(){
+     event.preventDefault();
+
+     addData();
+     submitPost();
+ })   
+    
 
 //when add button is clicked
 function addData() {
-    var newLabel = $("#newLabel").val().trim();
-    var newData = $("#data").val().trim();
+     var newLabel = $("#newLabel").val();
+     var newData = $("#data").val();
     labels.push(newLabel);
     dataSet.push(newData);
     myChart.update();
     //add to labels to dropdown
     $('#dataRemove').append('<option value="'+ newLabel +'">'+ newLabel+'</option>');
+
 };
+function submitPost(newPost) {
+
+     var newData = $("#data");
+     var newage = $("#age");
+     var logged = $("#newLabel");
+     var newuser = $("#username");
+     var newheight = $("#height");
+
+    var newPost = {
+        username: newuser.val().trim(),
+        logged_at: logged.val().trim(),
+        weight: newData.val().trim(),
+        height: newheight.val().trim(),
+        age: newage.val().trim(),
+      };
+
+    $.post("/api/weight", newPost, function() {
+      addData();
+    });
+  }
+
+  $("#deleteBtn").on("click",function(){
+    event.preventDefault();
+
+    removeData();
+    deletePost();
+})   
 
 //removal of data
 function removeData() {
@@ -59,7 +107,15 @@ function removeData() {
     myChart.update();
 }
 
-//live updating the labels for the dropdown menu????
+function deletePost(id) {
+    $.ajax({
+      method: "DELETE",
+      url: "/api/weight/" + id
+    })
+      .then(function() {
+        removeData();
+      });
+  }
 
 function dropDown(){
     for(var i=0; i<labels.length; i++){
@@ -68,3 +124,5 @@ function dropDown(){
 }
 //load the dates into dropdown menu to be deleted
 dropDown();
+
+
