@@ -3,7 +3,7 @@ var dataSet = [];
 var users = [];
 var dataUse = [];
 
-var newUser = $("#username").val().trim();
+var newUser = $("#currentUser").val().trim();
 
 function getPostData() {
     $.get("/api/weight", function(data) {
@@ -55,7 +55,7 @@ function UserDropdown(){
 //hello
 function getId(){
     var toDelete = $("#dataRemove").val().trim();
-    var newUser = $("#username").val().trim();
+    var newUser = $("#currentUser").val().trim();
         console.log("datausearray", dataUse);
         for(var i=0; i<dataUse.length; i++){
             console.log(dataUse[i].id);
@@ -119,7 +119,7 @@ $("#currentUser").on("change", function(){
     if(this.selectedIndex){
         resetGraph();
         createGraph();
-        $("#username").attr("value", $("#currentUser").val().trim());
+        // $("#username").attr("value", $("#currentUser").val().trim());
         dropDown(); 
     }
 })
@@ -185,7 +185,7 @@ function submitPost(newPost) {
      var newData = $("#data");
      var newage = $("#age");
      var logged = $("#newLabel");
-     var newuser = $("#username");
+     var newuser = $("#currentUser");
      var newheight = $("#height");
 
     var newPost = {
