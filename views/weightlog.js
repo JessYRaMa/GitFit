@@ -55,7 +55,7 @@ function UserDropdown(){
 function getId(){
     var toDelete = $("#dataRemove").val().trim();
     var newUser = $("#username").val().trim();
-
+        console.log("datausearray", dataUse);
         for(var i=0; i<dataUse.length; i++){
             console.log(dataUse[i].id);
             console.log(dataUse);
