@@ -18,7 +18,6 @@ function getPostData() {
             }
         };
         myChart.update();
-       dropDown();
        UserDropdown();    
     });
   };
@@ -26,9 +25,14 @@ function getPostData() {
   getPostData();
 
   function dropDown(){
+      $("#dataRemove").html('<option value="" disabled selected>Want to delete one?</option>');
     for(var i=0; i<labels.length; i++){
-        $('#dataRemove').append('<option value="'+labels[i]+'">'+labels[i]+'</option>');
+        $('#dataRemove').append('<option value="'+ labels[i]+'">'+labels[i]+'</option>');
+        console.log("hello");
     };
+
+    console.log(labels);
+    // labels.length = 0;
 }
 
 function UserDropdown(){
@@ -49,6 +53,7 @@ function UserDropdown(){
             if(data[i].username === currentUser){
             labels.push(moment(data[i].logged_at).format('L'));
             dataSet.push(data[i].weight);
+            dropDown();
             };
             if(users.indexOf(data[i].username) === -1){
                 users.push(data[i].username);
@@ -62,14 +67,12 @@ function resetGraph(){
     var chartData = myChart.data;
 
     console.log(chartData.length);
-
     // for(var i=0; i< chartData.labels.length || i<chartData.datasets[0].data.length; i++){
     // chartData.datasets[0].data.pop();
     // chartData.labels.pop();
     // }
-    
-    chartData.datasets[0].data = [];
-    chartData.labels = [];
+    chartData.datasets[0].data.length = 0;
+    chartData.labels.length = 0;
 
     console.log(myChart.data.datasets[0].data);
     console.log(myChart.data);
@@ -80,6 +83,14 @@ $("#deleteGraph").on("click", function(){
     resetGraph();
 });
 
+$("#currentUser").on("change", function(){
+    if(this.selectedIndex){
+        resetGraph();
+        createGraph();
+        $("#username").attr("value", $("#currentUser").val().trim());
+        dropDown();
+    }
+})
 //chart creation
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -116,13 +127,11 @@ $("#deleteGraph").on("click", function(){
         }
     });
 
-  
  $("#addBtn").on("click",function(){
      event.preventDefault();
      submitPost();
  })   
     
-
 //when add button is clicked
 function addData() {
      var newLabel = moment($("#newLabel").val()).format('L');
@@ -157,7 +166,6 @@ function submitPost(newPost) {
 
   $("#deleteBtn").on("click",function(){
     event.preventDefault();
-
     removeData();
     deletePost();
 })   
@@ -181,11 +189,6 @@ function deletePost(id) {
       });
   }
 
-function dropDown(){
-    for(var i=0; i<labels.length; i++){
-        $('#dataRemove').append('<option value="'+labels[i]+'">'+labels[i]+'</option>');
-    };
-}
 
 
 
