@@ -31,11 +31,7 @@ function getPostData() {
       $("#dataRemove").html('<option value="" disabled selected>Want to delete one?</option>');
     for(var i=0; i<labels.length; i++){
         $('#dataRemove').append('<option value="'+ labels[i]+'">'+labels[i]+'</option>');
-        console.log("hello");
     };
-
-    console.log(labels);
-    // labels.length = 0;
 }
 
 function UserDropdown(){
@@ -44,20 +40,11 @@ function UserDropdown(){
     };
 }
 
-//hello
 function getId(){
     var toDelete = $("#dataRemove").val().trim();
     var newUser = $("#currentUser").val().trim();
         console.log("datausearray", dataUse);
         for(var i=0; i<dataUse.length; i++){
-            console.log(dataUse[i].id);
-            console.log(dataUse);
-            console.log((moment(dataUse[i].logged_at).format('L')));
-            console.log("newUser" ,newUser);
-            console.log("toDelete", toDelete);
-            console.log(dataUse[i].username);
-            console.log("found match!", (newUser == dataUse[i].username && toDelete == (moment(dataUse[i].logged_at).format('L'))));
-
             if(newUser == dataUse[i].username && toDelete == (moment(dataUse[i].logged_at).format('L'))){
                     return(dataUse[i].id);
             } else{
@@ -66,15 +53,9 @@ function getId(){
         }
 };
 
-
  function createGraph(){
-    
     var currentUser = $("#currentUser").val().trim();
-
     $.get("/api/weight", function(data) {
-        console.log(data);
-        console.log(currentUser);
-
         for(var i=0; i<data.length; i++){
             if(data[i].username === currentUser){
             labels.push(moment(data[i].logged_at).format('L'));
@@ -91,17 +72,8 @@ function getId(){
 
 function resetGraph(){
     var chartData = myChart.data;
-
-    console.log(chartData.length);
-    // for(var i=0; i< chartData.labels.length || i<chartData.datasets[0].data.length; i++){
-    // chartData.datasets[0].data.pop();
-    // chartData.labels.pop();
-    // }
     chartData.datasets[0].data.length = 0;
     chartData.labels.length = 0;
-
-    console.log(myChart.data.datasets[0].data);
-    console.log(myChart.data);
     myChart.update();
 };
 
@@ -113,7 +85,6 @@ $("#currentUser").on("change", function(){
     if(this.selectedIndex){
         resetGraph();
         createGraph();
-        // $("#username").attr("value", $("#currentUser").val().trim());
         dropDown(); 
     }
 })
@@ -197,7 +168,6 @@ function submitPost(newPost) {
 
   $("#deleteBtn").on("click",function(){
     event.preventDefault();
-    // console.log("ITS RETURNING THIS", getId());
     removeData();
     deletePost(getId());
 })   
