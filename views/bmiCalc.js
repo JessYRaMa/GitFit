@@ -12,11 +12,13 @@
         if (units == 'Imperial' && weightType == 'Lbs' && heightType == 'Inches') {
             imperialBmi();
         };
+        imperialBmi();
             }
     let metricBmi = function(){
         let metBmi = weight / height;
-        if (units == 'Metric' && weightType == 'Kg' && heightType == 'Cm') {
+        if(units == 'Metric' && weightType == 'Kg' && heightType == 'Cm') {
             metricBmi();
         }
     };
+    metricBmi();
 });
