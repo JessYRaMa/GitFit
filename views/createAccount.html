@@ -136,17 +136,21 @@
         function createUser() {
         $.get("/api/weight", function(data) {
         console.log(data);
+        var userData = [];
         var newUser = $("#username").val().trim();
         for(var i=0; i<data.length; i++){
-            if (newUser == data[i].username){
-                alert("Sorry! That name has been taken! Please choose another one.");
-                break;
-            }
-            else{
-                submitPost();
-                break;
-            }
+            userData.push(data[i].username);
         };
+        var index = userData.indexOf(newUser);
+        if(index != -1){
+            alert("Sorry that username is already in use. Please select another one");
+        }
+        else{
+            submitPost();
+        }
+        console.log(userData);
+        console.log(index);
+        console.log(newUser);
     });
   };
         function submitPost(newPost) {
