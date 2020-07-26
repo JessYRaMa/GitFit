@@ -1,24 +1,22 @@
+var units = $('#units').val();
+var weightType = $('#weightType').val();
+var heightType = $('#heightType').val();
+var weight = $("#weight").val().trim();
+var height = $("#height").val().trim();
 
     $('#calculate').on('click', function(){
-    let units = $('#units').val();
-    let weightType = $('#weightType').val();
-    let heightType = $('#heightType').val();
-    let weight = $("#weight").val().trim();
-    let height = $("#height").val().trim();
-    let impBmi;
-    let metBmi;
-    console.log(impBmi);
+        if (units == 'Imperial' && weightType == 'Lbs' && heightType == 'Inches') {
+            $('#yourBmi').html(imperialBmi());
+        }
+        if (units == 'Metric' && weightType == 'Kg' && heightType == 'Cm') {
+            $('#yourBmi').html(metricBmi());
+            }
+    });
     
-    let imperialBmi = function(){
-        impBmi = weight / height * 703;
-        if ( units == 'Imperial') && ( weightType == 'Lbs') && ( heightType == 'Inches')) {
-              imperialBmi();
-            }
+    var imperialBmi = function(){
+       return weight / height * 703;
     };
-    let metricBmi = function(){
-            metBmi = weight / height;
-            if ( units == 'Metric') && (weightType == 'Kg') && (heightType == 'Cm')) {
-                metricBmi();
-            }
-        };  
-});
+    
+    var metricBmi = function(){
+     return weight / height;
+};
