@@ -35,6 +35,7 @@ function getPostData() {
 }
 
 function UserDropdown(){
+    $("#currentUser").html('<option value="" selected = "selected">Select Your Username!</option>');
     for(var i=0; i<users.length; i++){
         $('#currentUser').append('<option value="'+users[i]+'">'+users[i]+'</option>');
     };
@@ -60,6 +61,7 @@ function getId(){
         return -1;
 };
 
+// localStorage.getItem("selected")||
  function createGraph(){
     var currentUser = $("#currentUser").val().trim();
     $.get("/api/weight", function(data) {
@@ -88,8 +90,11 @@ $("#deleteGraph").on("click", function(){
     resetGraph(); 
 });
 
+
 $("#currentUser").on("change", function(){
     if(this.selectedIndex){
+        // localStorage.setItem("selected",($(this).val()));
+        // console.log(localStorage.getItem("selected"));
         resetGraph();
         createGraph();
         dropDown(); 
@@ -158,6 +163,8 @@ function submitPost(newPost) {
        alert("no empty fields");
      } else{
         addData();
+        getPostData();
+
         var newPost = {
             username: newuser.val().trim(),
             logged_at: logged.val().trim(),
@@ -195,6 +202,8 @@ function deletePost(id) {
     } else{
 
         removeData();
+        dropDown();
+        getPostData();
 
         console.log("deleted");
         $.ajax({
@@ -207,5 +216,5 @@ function deletePost(id) {
     }
   }
 
-
+//DOUBLES STARTED AFTER GETPOSTDATA
 
