@@ -128,11 +128,6 @@ $("#currentUser").on("change", function(){
      event.preventDefault();
      submitPost();
  });
- 
- $("#submit").on("click", function(){
-     event.preventDefault();
-     submitPost();
- })
     
 //when add button is clicked
 function addData() {
@@ -143,7 +138,6 @@ function addData() {
     myChart.update();
     //add to labels to dropdown
     $('#dataRemove').append('<option value="'+ newLabel +'">'+ newLabel+'</option>');
-
 };
 function submitPost(newPost) {
 
@@ -153,17 +147,24 @@ function submitPost(newPost) {
      var newuser = $("#currentUser");
      var newheight = $("#height");
 
-    var newPost = {
-        username: newuser.val().trim(),
-        logged_at: logged.val().trim(),
-        weight: newData.val().trim(),
-        height: newheight.val().trim(),
-        age: newage.val().trim(),
-      };
+     if(!(newuser.val() && logged.val() && newData.val() && newheight.val() && newage.val())){
+       alert("no empty fields");
+     } else{
 
-    $.post("/api/weight", newPost, function() {
-      console.log(newPost);
-    });
+        addData();
+        
+        var newPost = {
+            username: newuser.val().trim(),
+            logged_at: logged.val().trim(),
+            weight: newData.val().trim(),
+            height: newheight.val().trim(),
+            age: newage.val().trim(),
+          };
+    
+        $.post("/api/weight", newPost, function() {
+          console.log(newPost);
+        });
+     }
   }
 
   $("#deleteBtn").on("click",function(){
