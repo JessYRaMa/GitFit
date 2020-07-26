@@ -125,31 +125,37 @@
 
     <script>
 
-            var newAccount = $(".created-account");
-            var newuser = $("#username").val().trim();
+        var newAccount = $(".created-account");
+        var newuser = $("#username").val().trim();
 
         $("#submit").on("click", function () {
             event.preventDefault();
             submitPost();
             newAccount.html("<h1>" + "Thanks for joining the GitFit Fam!" + "</h1>");
         });
+
         function submitPost(newPost) {
-            var newData = $("#weight");
+
+            var newData = $("#data");
             var newage = $("#age");
-            var logged = $("#logged_at");
-            var newuser = $("#username");
+            var logged = $("#newLabel");
+            var newuser = $("#currentUser");
             var newheight = $("#height");
-            //object to submit to database
-            var newPost = {
-                username: newuser.val().trim(),
-                logged_at: logged.val().trim(),
-                weight: newData.val().trim(),
-                height: newheight.val().trim(),
-                age: newage.val().trim(),
-            };
-            $.post("/api/weight", newPost, function () {
-                console.log(newPost);
-            });
+
+            if (!(newuser.val() && logged.val() && newData.val() && newheight.val() && newage.val())) {
+                alert("no empty fields");
+            } else {
+                var newPost = {
+                    username: newuser.val().trim(),
+                    logged_at: logged.val().trim(),
+                    weight: newData.val().trim(),
+                    height: newheight.val().trim(),
+                    age: newage.val().trim(),
+                };
+                $.post("/api/weight", newPost, function () {
+                    console.log(newPost);
+                });
+            }
         };
     </script>
 </body>
