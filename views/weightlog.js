@@ -44,13 +44,20 @@ function getId(){
     var toDelete = $("#dataRemove").val().trim();
     var newUser = $("#currentUser").val().trim();
         console.log("datausearray", dataUse);
+
         for(var i=0; i<dataUse.length; i++){
+            console.log("id",dataUse[i].id);
+            console.log("username", dataUse[i].username);
+            console.log("logged", (moment(dataUse[i].logged_at).format('L')));
+            console.log("to delete", toDelete);
+            console.log("newUser", newUser);
+
             if(newUser == dataUse[i].username && toDelete == (moment(dataUse[i].logged_at).format('L'))){
                     return(dataUse[i].id);
-            } else{
-                return -1;
-            }
+            } 
         }
+
+        return -1;
 };
 
  function createGraph(){
@@ -150,9 +157,7 @@ function submitPost(newPost) {
      if(!(newuser.val() && logged.val() && newData.val() && newheight.val() && newage.val())){
        alert("no empty fields");
      } else{
-
         addData();
-        
         var newPost = {
             username: newuser.val().trim(),
             logged_at: logged.val().trim(),
@@ -160,7 +165,6 @@ function submitPost(newPost) {
             height: newheight.val().trim(),
             age: newage.val().trim(),
           };
-    
         $.post("/api/weight", newPost, function() {
           console.log(newPost);
         });
@@ -169,7 +173,6 @@ function submitPost(newPost) {
 
   $("#deleteBtn").on("click",function(){
     event.preventDefault();
-    removeData();
     deletePost(getId());
 })   
 
@@ -185,9 +188,15 @@ function removeData() {
 }
 
 function deletePost(id) {
-    if (id < 0){
+    if (id == -1){
+        console.log(id);
+        console.log("not deleted");
         alert("ERROR! NO EVIDENCE TO REMOVE!!!");
     } else{
+
+        removeData();
+
+        console.log("deleted");
         $.ajax({
             method: "DELETE",
             url: "/api/weight/" + id
