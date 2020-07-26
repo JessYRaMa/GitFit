@@ -32,7 +32,7 @@
                         <div class="col-lg-12">
                             <div class="col-12 form-group">
                                 <h1>Create Account</h1>
-                                <form id="newAccount" onSubmit="createUser()">
+                                <form id="newAccount">
                                     <div class="row">
                                         <div class="col-sm-2 col-form-label">
                                             <label for="username">Username:</label>
@@ -130,10 +130,8 @@
 
         $("#submit").on("click", function () {
             event.preventDefault();
-            createUser();
-            newAccount.html("<h1>" + "Thanks for joining the GitFit Fam!" + "</h1>");
+            createUser();      
         });
-
 
         function createUser() {
         $.get("/api/weight", function(data) {
@@ -145,6 +143,7 @@
             }
             else{
                 submitPost();
+                break;
             }
         };
     });
@@ -169,6 +168,7 @@
                 };
                 $.post("/api/weight", newPost, function () {
                     console.log(newPost);
+                    newAccount.html("<h1>" + "Thanks for joining the GitFit Fam!" + "</h1>");
                 });
             }
         };
