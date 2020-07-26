@@ -1,24 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitFit</title>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/swiper.css" type="text/css" />
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+	<link rel="stylesheet" href="css/custom.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://code.jquery.com/jquery.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
+    <title>GitFit | Fitness Tracker</title>
 </head>
-<body>
-<div class="container">
-    <h1>Welcome to GitFit</h1>
-    
-    <div id="btns">
-        <a href="/createAccount"><button class = "btn btn-primary" id="createAcc">Create Account</button></a>
-        <a href="/weightlog"><button class = "btn btn-primary" id="createAcc">Weight Log</button></a>
-        <a href="/calories"><button class = "btn btn-primary" id="createAcc">Calorie Calculator</button></a>
-        <a href="/bmiCalc"><button class = "btn btn-primary" id="bmi">BMI Calculator</button></a>
-    </div>
+<body class="stretched">
+	<div id="wrapper" class="clearfix">
+		<header id="header" class="transparent-header dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+						<div id="logo">
+							<a href="index.html" class="standard-logo" data-dark-logo="images/logowhite.png"><img src="images/logowhite.png" alt="gitfitlogo"></a>
+							<a href="index.html" class="retina-logo" data-dark-logo="images/logowhite.png"><img src="images/logowhite.png" alt="gitfitlogo"></a>
+						</div>
+						<div id="primary-menu-trigger">
+							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+						</div>
+						<nav class="primary-menu">
 
+							<ul class="menu-container">
+								<li class="menu-item">
+									<a class="menu-link" href="index.html"><div>Home</div></a></li>	
+								<li class="menu-item">
+									<a class="menu-link" href="createAccount.html"><div>Create Account</div></a></li>
+								<li class="menu-item">
+                                    <a class="menu-link" href="#"><div>Calculators</div></a>
+                                    <ul class="sub-menu-container">
+										<li class="menu-item">
+											<a class="menu-link" href="calories.html"><div>Calorie Calculator</div></a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="bmiCalc.html"><div>BMI Calculator</div></a>
+										</li>	
+                                        </ul>
+                                    </li>
+								<li class="menu-item mega-menu">
+									<a class="menu-link" href="#"><div>Exercises</div></a></li>
+								<li class="menu-item">
+									<a class="menu-link" href="#"><div>Explore our App</div></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header>
+
+		<section id="slider" class="slider-element slider-parallax swiper_wrapper min-vh-60 min-vh-md-100 include-header">
+			<div class="slider-inner">
+
+				<div class="swiper-container swiper-parent">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide dark">
+							<div class="container">
+								<div class="slider-caption slider-caption-center">
+									<h2 data-animate="fadeInUp">Welcome to GitFit</h2>
+									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">The newest progress tracker on the block! We included all the elements you need to GitFit. Join the GitFit family and start tracking with us today!</p>
+								</div>
+							</div>
+							<div class="swiper-slide-bg" style="background-image: url('images/slider/swiper/1.jpg');"></div>
+						</div>
+						<div class="swiper-slide dark">
+							<div class="container">
+								<div class="slider-caption slider-caption-center">
+									<h2 data-animate="fadeInUp">Created with you in mind</h2>
+									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">With the inclusion of a calorie calculator, BMI calculator, and a wide array of exercises, you don't need to go anywhere else for your fitness needs.</p>
+								</div>
+							</div>
+							<div class="video-wrap">
+								<video poster="images/videos/explore-poster.jpg" preload="auto" loop autoplay muted>
+									<source src='images/videos/explore.mp4' type='video/mp4' />
+									<source src='images/videos/explore.webm' type='video/webm' />
+								</video>
+								<div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="container clearfix">
+								<div class="slider-caption">
+									<h2 data-animate="fadeInUp" style = "color: white;">Great Progress</h2>
+									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200" style = "color: white">You'll be surprised to see the Final Results of your GitFit journey &amp; would crave for more.</p>
+								</div>
+							</div>
+                            <div class="swiper-slide-bg" style="background-image: url('include/rs-plugin/demos/assets/images/gym2.jpg'); background-position: center top;"></div>
+						</div>
+					</div>
+					<div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
+					<div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
+					<div class="slide-number"><div class="slide-number-current"></div><span>/</span><div class="slide-number-total"></div></div>
+				</div>
+
+			</div>
+		</section>
+	</div>
+	<div id="gotoTop" class="icon-angle-up"></div>
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.js"></script>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>   

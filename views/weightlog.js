@@ -61,7 +61,6 @@ function getId(){
         return -1;
 };
 
-// localStorage.getItem("selected")||
  function createGraph(){
     var currentUser = $("#currentUser").val().trim();
     $.get("/api/weight", function(data) {
