@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
+    <script type="text/javascript" src="./bmiCalc.js"></script>
 </head>
 <body>
     <!-- * IMPERIAL BMI FORMULA *
@@ -93,31 +94,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>   
-
-    <script type="text/javascript">
-        $('#calculate').on('click', function(){
-        let weight = $("#weight").val().trim();
-        let height = $("#height").val().trim();
-        let impBmi;
-        let metBmi;
-        console.log(impBmi);
-        
-        let imperialBmi = function(){
-            impBmi = weight / height * 703;
-        };
-        let metricBmi = function(){
-                metBmi = weight / height;
-        };
-        
-        if (($('#units') == 'imperial') && ($('#weightType') == 'Lbs') && ($('#heightType') == 'Inches')){
-                imperialBmi();
-            }
-        else if (($('#units') == 'metric') && ($('#weightType') == 'Kg') && ($('heightType') == 'Cm')) {
-            metBmi();
-            }
-    });
-    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
 </html>
