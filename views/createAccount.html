@@ -32,7 +32,7 @@
                         <div class="col-lg-12">
                             <div class="col-12 form-group">
                                 <h1>Create Account</h1>
-                                <form id="newAccount" onSubmit="submitPost()">
+                                <form id="newAccount" onSubmit="createUser()">
                                     <div class="row">
                                         <div class="col-sm-2 col-form-label">
                                             <label for="username">Username:</label>
@@ -130,16 +130,31 @@
 
         $("#submit").on("click", function () {
             event.preventDefault();
-            submitPost();
+            createUser();
             newAccount.html("<h1>" + "Thanks for joining the GitFit Fam!" + "</h1>");
         });
 
+
+        function createUser() {
+        $.get("/api/weight", function(data) {
+        console.log(data);
+        var newUser = $("#username").val().trim();
+        for(var i=0; i<data.length; i++){
+            if (newUser == data[i].username){
+                alert("Sorry! That name has been taken! Please choose another one.");
+            }
+            else{
+                submitPost();
+            }
+        };
+    });
+  };
         function submitPost(newPost) {
 
-            var newData = $("#data");
+            var newData = $("#weight");
             var newage = $("#age");
-            var logged = $("#newLabel");
-            var newuser = $("#currentUser");
+            var logged = $("#logged_at");
+            var newuser = $("#username");
             var newheight = $("#height");
 
             if (!(newuser.val() && logged.val() && newData.val() && newheight.val() && newage.val())) {
