@@ -131,6 +131,7 @@
         if(index != -1){
             var userTaken = $("#usernameTaken").html("<p><em>" + "Sorry! Username already taken. Try again." + "</em><p>");
                 userTaken.css("color", "red");
+                clearValues();
 
         }
         else{
@@ -152,6 +153,7 @@
             if (!(newuser.val() && logged.val() && newData.val() && newheight.val() && newage.val())) {
                 var userTaken = $("#usernameTaken").html("<p><em>" + "Please fill in all fields." + "</em><p>");
                 userTaken.css("color", "red");
+                clearValues();
             } else {
                 var newPost = {
                     username: newuser.val().trim(),
@@ -164,8 +166,22 @@
                     console.log(newPost);
                     var newUser = $("#usernameTaken").html("<h5>" + "Thanks for joining the GitFit Fam!" + "</h5>");
                     newUser.css("color", "black");
+                    clearValues();
                 });
             }
+        };
+
+        function clearValues(){
+            var newData = $("#weight");
+            var newage = $("#age");
+            var logged = $("#logged_at");
+            var newuser = $("#username");
+            var newheight = $("#height");
+            newData.val(null);
+            newage.val(null);
+            logged.val(null);
+            newuser.val(null);
+            newheight.val(null);
         };
     </script>
 </body>
