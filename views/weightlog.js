@@ -23,13 +23,14 @@ function getPostData() {
             dataUse.push(data[i]);
         };
         myChart.update();
-       //UserDropdown();
+       //UserDropdown();    
 
        resetGraph();
        createGraph();
        dropDown(); 
 
-    //    sortLD();
+       sortLD();
+    
     });
   };
 
@@ -226,42 +227,77 @@ function deletePost(id) {
 
 
 
-  //ACCESS LABELS AND DATASET ERROR (labelsArry empty etc)
-//   function sortLD(){
-//       console.log("check:" + labels);
-//       console.log(dataSet);
+//  ACCESS LABELS AND DATASET ERROR (labelsArry empty etc)
+  function sortLD(){
 
-//       console.log(labels.pop());
-//         console.log(dataSet.pop());
+    DebugMe("sortLD()");
 
-//       var labelArry = [];
-//       var dataArry = [];
+    //   var labelArry = [];
+    //   var dataArry = [];
       
 
-//       for(let i = 0; i < labels.length; ++i){
-//         labelArry.push(labels[i]);
-//         dataArry.push(dataSet[i]);
-//       }
+    //   for(let i = 0; i < labels.length; ++i){
+    //     labelArry.push(labels[i]);
+    //     dataArry.push(dataSet[i]);
+    //   }
 
-//       for(let i = 0; i < labelArry.length-1; ++i){
-//           for(let j = 0; j < labelArry.length- i - 1; ++j){
-//               if(labelArry[j] > labelArry[j+1]){
-//                 var temp = labelArry[j]; 
-//                 labelArry[j] = labelArry[j+1]; 
-//                 labelArry[j+1] = temp; 
+    //   for(let i = 0; i < labelArry.length-1; ++i){
+    //       for(let j = 0; j < labelArry.length- i - 1; ++j){
+    //           if(labelArry[j] > labelArry[j+1]){
+    //             var temp = labelArry[j]; 
+    //             labelArry[j] = labelArry[j+1]; 
+    //             labelArry[j+1] = temp; 
 
-//                 var temp2 = dataArry[j]; 
-//                 dataArry[j] = dataArry[j+1]; 
-//                 dataArry[j+1] = temp2; 
-//               }
-//           }
-//       }
+    //             var temp2 = dataArry[j]; 
+    //             dataArry[j] = dataArry[j+1]; 
+    //             dataArry[j+1] = temp2; 
+    //           }
+    //       }
+    //   }
 
-//       for(let i = 0; i < labels.length; ++i){
-//           labels[i] = labelArry[i];
-//           dataSet[i] = dataArry[i];
-//       }
+    //   for(let i = 0; i < labels.length; ++i){
+    //       labels[i] = labelArry[i];
+    //       dataSet[i] = dataArry[i];
+    //   }
 
-//       console.log(labelArry);
-//       console.log(dataArry);
-//   }
+  }
+
+function DebugMe(location){
+    var chartyData = myChart.data;
+
+    console.log("---------------------------------DEBUGGING-----------------------------------\n",
+    "ISSUE: Label & Dataset Access inside " + location + "-\n",
+    "\t" + "labels: ", labels, "\n",
+    "\t" + "labels.length: ", labels.length, "\n",
+    "\t" + "labels[0]: ", labels[0], "\n",
+    "\t" + "dataSet: ", dataSet,  "\n",
+    "\t" + "dataSet.length: ", dataSet.length, "\n",
+    "\t" + "dataSet[0]: ", dataSet[0],  "\n",
+    "\t" + "myChart.data.labels: ", myChart.data.labels, "\n",
+    "\t" + "myChart.data.labels.length: ", myChart.data.labels.length, "\n",
+    "\t" + "myChart.data.labels[0]: ", myChart.data.labels[0], "\n",
+    "\t" + "myChart.data.datasets[0].data: ", myChart.data.datasets[0].data, "\n",
+    "\t" + "myChart.data.datasets[0].data.length: ", myChart.data.datasets[0].data.length, "\n",
+    "\t" + "myChart.data.datasets[0].data[0]: ", myChart.data.datasets[0].data[0], "\n",
+    "\t" + "-(var chartyData = myChart.data define within debug function)-\n",
+    "\t" + "chartyData.labels: ", chartyData.labels, "\n",
+    "\t" + "chartyData.labels.length: ", chartyData.labels.length, "\n",
+    "\t" + "chartyData.labels[0]: ", chartyData.labels[0], "\n",
+    "\t" + "chartyData.datasets[0].data: ", chartyData.datasets[0].data, "\n",
+    "\t" + "chartyData.datasets[0].data.length: ", chartyData.datasets[0].data.length, "\n",
+    "\t" + "chartyData.datasets[0].data[0]: ", chartyData.datasets[0].data[0], "\n",
+    "Notes:\n",
+    "\t\t Idea1: Main and functions within main have some form of limited access, "
+        + "functions with a $.get have perfect access. The issue must be scope?"
+        +" (Not a viable method.)\n",
+    "\t\t Idea2: access data via myChart.data.labels & ... .datasets[0].data (Not a viable method.)\n",
+    "\t\t Idea3: define function within a function that has $.get ." + "$.get must not be the issue" 
+        + "function defined within $.get did not get access, but function defined within resetGraph() did."
+        +" why? (Not a viable method.)\n",
+    "\t\t Idea4: Data access attempt are too direct, try method of access used within resetGraph()" 
+        + "(Not a viable method.) so why did it work within the resetGraph()???\n",
+    "\t\t Idea5: ...\n", 
+    "\n----------------------------------------------------------------------------\n");
+}
+
+
