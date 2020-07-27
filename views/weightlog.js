@@ -28,6 +28,8 @@ function getPostData() {
        resetGraph();
        createGraph();
        dropDown(); 
+
+    //    sortLD();
     });
   };
 
@@ -40,12 +42,12 @@ function getPostData() {
     };
 }
 
-function UserDropdown(){
-    $("#currentUser").html('<option value="'+localUserName+'">'+localUserName+'</option>' || '<option value="" selected = "selected">Select Your Username!</option>');
-    for(var i=0; i<users.length; i++){
-        $('#currentUser').append('<option value="'+users[i]+'">'+users[i]+'</option>');
-    };
-}
+// function UserDropdown(){
+//     $("#currentUser").html('<option value="'+localUserName+'">'+localUserName+'</option>' || '<option value="" selected = "selected">Select Your Username!</option>');
+//     for(var i=0; i<users.length; i++){
+//         $('#currentUser').append('<option value="'+users[i]+'">'+users[i]+'</option>');
+//     };
+// }
 
 function getId(){
     var toDelete = $("#dataRemove").val().trim();
@@ -105,6 +107,7 @@ $("#deleteGraph").on("click", function(){
 //         dropDown(); 
 //     }
 // })
+
 //chart creation
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -221,5 +224,44 @@ function deletePost(id) {
     }
   }
 
-//DOUBLES STARTED AFTER GETPOSTDATA
 
+
+  //ACCESS LABELS AND DATASET ERROR (labelsArry empty etc)
+//   function sortLD(){
+//       console.log("check:" + labels);
+//       console.log(dataSet);
+
+//       console.log(labels.pop());
+//         console.log(dataSet.pop());
+
+//       var labelArry = [];
+//       var dataArry = [];
+      
+
+//       for(let i = 0; i < labels.length; ++i){
+//         labelArry.push(labels[i]);
+//         dataArry.push(dataSet[i]);
+//       }
+
+//       for(let i = 0; i < labelArry.length-1; ++i){
+//           for(let j = 0; j < labelArry.length- i - 1; ++j){
+//               if(labelArry[j] > labelArry[j+1]){
+//                 var temp = labelArry[j]; 
+//                 labelArry[j] = labelArry[j+1]; 
+//                 labelArry[j+1] = temp; 
+
+//                 var temp2 = dataArry[j]; 
+//                 dataArry[j] = dataArry[j+1]; 
+//                 dataArry[j+1] = temp2; 
+//               }
+//           }
+//       }
+
+//       for(let i = 0; i < labels.length; ++i){
+//           labels[i] = labelArry[i];
+//           dataSet[i] = dataArry[i];
+//       }
+
+//       console.log(labelArry);
+//       console.log(dataArry);
+//   }

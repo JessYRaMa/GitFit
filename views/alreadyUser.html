@@ -11,13 +11,14 @@
 <body>
     <div class="container">
         <h1>GitFit</h1>
-        <form method="GET" action="/api/weight">
+        <div id = usernameTaken></div>
+        <form>
             <h2>Login</h2>
             <label for="username">Username</label>
             <input type="text" id="username" name="username" value=""><br>
-            <br><label for="psswrd">Password</label>
-            <input type="password" id="psswrd" name="psswrd" value=""> <br>
-            <br><button id="login" class = "btn btn-primary">View Log</button>
+            <!-- <br><label for="psswrd">Password</label>
+            <input type="password" id="psswrd" name="psswrd" value=""> <br> -->
+            <br><button id="submit" class = "btn btn-primary">View Log</button>
         </form> 
 
         <div class="newuser">
@@ -26,7 +27,22 @@
     </div>
 
     <script>
-        localStorage.setItem("userName", $("#username").val());
+        $("#submit").on("click", function () {
+            event.preventDefault();
+
+            if (!$("#username").val()) {
+              var userTaken = $("#usernameTaken").html("<p><em>" + "No Empty Fields." + "</em><p>");
+              userTaken.css("color", "red");
+              clearValues();
+            }else{
+              localStorage.setItem("userName", $("#username").val());
+              window.location = "weightlog.html";
+            }
+        });
+        function clearValues(){
+            var newuser = $("#username");
+            newuser.val(null);
+        };
 
 
     </script>
