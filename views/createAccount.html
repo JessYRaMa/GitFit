@@ -111,10 +111,15 @@
 
     <script>
 
+
         var newAccount = $(".created-account");
         var newuser = $("#username").val().trim();
 
+
+
         $("#submit").on("click", function () {
+            localStorage.setItem("userName", $("#username").val());
+
             event.preventDefault();
             createUser();      
         });

@@ -2,14 +2,16 @@ var labels = [];
 var dataSet = [];
 var users = [];
 var dataUse = [];
+var localUserName = window.localStorage.userName;
 
-$("#currentUser").attr("value", "default");
-var newUser = $("#currentUser").val().trim();
+$("#currentUser").attr("value", localUserName);
+var newUser = localUserName;
+//localUserName;
 
 function getPostData() {
     $.get("/api/weight", function(data) {
         console.log(data);
-        var newUser = $("#currentUser").val().trim();
+        var newUser = localUserName;
         for(var i=0; i<data.length; i++){
             if(data[i].username === newUser){
             labels.push(moment(data[i].logged_at).format('L'));
@@ -21,7 +23,11 @@ function getPostData() {
             dataUse.push(data[i]);
         };
         myChart.update();
-       UserDropdown();
+       //UserDropdown();
+
+       resetGraph();
+       createGraph();
+       dropDown(); 
     });
   };
 
@@ -35,7 +41,7 @@ function getPostData() {
 }
 
 function UserDropdown(){
-    $("#currentUser").html('<option value="" selected = "selected">Select Your Username!</option>');
+    $("#currentUser").html('<option value="'+localUserName+'">'+localUserName+'</option>' || '<option value="" selected = "selected">Select Your Username!</option>');
     for(var i=0; i<users.length; i++){
         $('#currentUser').append('<option value="'+users[i]+'">'+users[i]+'</option>');
     };
@@ -43,7 +49,7 @@ function UserDropdown(){
 
 function getId(){
     var toDelete = $("#dataRemove").val().trim();
-    var newUser = $("#currentUser").val().trim();
+    var newUser = localUserName;
         console.log("datausearray", dataUse);
 
         for(var i=0; i<dataUse.length; i++){
@@ -62,7 +68,7 @@ function getId(){
 };
 
  function createGraph(){
-    var currentUser = $("#currentUser").val().trim();
+    var currentUser = localUserName;
     $.get("/api/weight", function(data) {
         for(var i=0; i<data.length; i++){
             if(data[i].username === currentUser){
@@ -90,15 +96,15 @@ $("#deleteGraph").on("click", function(){
 });
 
 
-$("#currentUser").on("change", function(){
-    if(this.selectedIndex){
-        // localStorage.setItem("selected",($(this).val()));
-        // console.log(localStorage.getItem("selected"));
-        resetGraph();
-        createGraph();
-        dropDown(); 
-    }
-})
+// $("#currentUser").on("change", function(){
+//     if(this.selectedIndex){
+//         // localStorage.setItem("selected",($(this).val()));
+//         // console.log(localStorage.getItem("selected"));
+//         resetGraph();
+//         createGraph();
+//         dropDown(); 
+//     }
+// })
 //chart creation
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -130,7 +136,7 @@ $("#currentUser").on("change", function(){
             },
             title: {
                 display: true,
-                text: 'Weight Log'
+                text: 'Weight Log' + ': ' + localUserName
             }
         }
     });
@@ -155,17 +161,17 @@ function submitPost(newPost) {
      var newData = $("#data");
      var newage = $("#age");
      var logged = $("#newLabel");
-     var newuser = $("#currentUser");
+     var newuser = localUserName;
      var newheight = $("#height");
 
-     if(!(newuser.val() && logged.val() && newData.val() && newheight.val() && newage.val())){
+     if(!(logged.val() && newData.val() && newheight.val() && newage.val())){
        alert("no empty fields");
      } else{
         addData();
         getPostData();
 
         var newPost = {
-            username: newuser.val().trim(),
+            username: newuser,
             logged_at: logged.val().trim(),
             weight: newData.val().trim(),
             height: newheight.val().trim(),
