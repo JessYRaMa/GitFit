@@ -288,7 +288,7 @@ function DebugMe(location){
     "\t" + "chartyData.datasets[0].data[0]: ", chartyData.datasets[0].data[0], "\n",
     "Notes:\n",
     "\t\t Idea1: Main and functions within main have some form of limited access, "
-        + "functions with a $.get have perfect access. The issue must be scope?"
+        + "functions with a $.get have perfect access (sometimes???). The issue must be scope?"
         +" (Not a viable method.)\n",
     "\t\t Idea2: access data via myChart.data.labels & ... .datasets[0].data (Not a viable method.)\n",
     "\t\t Idea3: define function within a function that has $.get ." + "$.get must not be the issue" 
