@@ -4,8 +4,10 @@
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="SemiColonWeb" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="stylesheet" href="css/dark.css" type="text/css" />
@@ -15,8 +17,10 @@
 	<link rel="stylesheet" href="css/components/ion.rangeslider.css" type="text/css" />
 	<link rel="stylesheet" href="css/custom.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="css/custom.css" type="text/css" />
-	<title>GitFit | Calories</title>
+	<script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
+	<title>GitFit | Calorie Calculator</title>
 
 	<style>
 		.form-group > label.error {
@@ -46,12 +50,55 @@
 	</style>
 
 </head>
-
 <body class="stretched">
+
 	<div id="wrapper" class="clearfix">
-		<section id="page-title">
+
+		<header id="header" class="transparent-header dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+						<div id="logo">
+							<a href="index.html" class="standard-logo" data-dark-logo="images/logowhite.png"><img src="images/logowhite.png" alt="gitfitlogo"></a>
+							<a href="index.html" class="retina-logo" data-dark-logo="images/logowhite.png"><img src="images/logowhite.png" alt="gitfitlogo"></a>
+						</div>
+						<div id="primary-menu-trigger">
+							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+						</div>
+						<nav class="primary-menu">
+
+							<ul class="menu-container">
+								<li class="menu-item">
+									<a class="menu-link" href="index.html"><div>Home</div></a></li>	
+								<li class="menu-item">
+									<a class="menu-link" href="createAccount.html"><div>Create Account</div></a></li>
+								<li class="menu-item">
+                                    <a class="menu-link" href="#"><div>Calculators</div></a>
+                                    <ul class="sub-menu-container">
+										<li class="menu-item">
+											<a class="menu-link" href="calories.html"><div>Calorie Calculator</div></a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="bmiCalc.html"><div>BMI Calculator</div></a>
+										</li>	
+                                        </ul>
+                                    </li>
+								<li class="menu-item mega-menu">
+									<a class="menu-link" href="#"><div>Exercises</div></a></li>
+								<li class="menu-item">
+									<a class="menu-link" href="#"><div>Explore our App</div></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header>
+		<section id="page-title" class="page-title-parallax include-header" style="background-image: url('images/nutrition.png'); padding: 120px 0;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
 			<div class="container clearfix">
-				<h1>Calorie Calculator</h1>
+				<h1 data-animate="fadeInUp" style = "color: white;">Calorie Calculator</h1>
+				<span data-animate="fadeInUp" data-delay="300" style = "color: white;">Find out your estimated caloric intake.</span>
 			</div>
 		</section>
 		<section id="content">
@@ -184,10 +231,21 @@
 			</div>
 		</section>
 	</div>
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
 	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- JavaScripts
+	============================================= -->
 	<script src="js/jquery.js"></script>
 	<script src="js/plugins.min.js"></script>
 	<script src="js/components/rangeslider.min.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
 	<script src="js/functions.js"></script>
 	<script>
 		jQuery(document).ready( function(){
