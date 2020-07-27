@@ -77,12 +77,12 @@
                                         <div class="line line-sm"></div>
     
                                         <div class="w-100 text-center">
-                                            <h4 style="margin-bottom: 15px;">Created your account?</h4>
-                                            <a href="/weightlog.html">Start Logging Now!</a>
+                                            <!-- <h4 style="margin-bottom: 15px;">Created your account?</h4> -->
+                                            <!-- <a href="/weightlog.html">Start Logging Now!</a>
                                             <br>
-                                            <span class="d-none d-md-inline-block">or</span>
+                                            <span class="d-none d-md-inline-block">or</span> -->
                                             <h4 style="margin-bottom: 15px;">Already a Member?</h4>
-                                            <a href="/weightlog.html">Access the logs now.</a>
+                                            <a href="/alreadyUser.html">Login Here.</a>
                                         </div>
                                     </div>
                                 </div>
@@ -169,9 +169,10 @@
                 };
                 $.post("/api/weight", newPost, function () {
                     console.log(newPost);
-                    var newUser = $("#usernameTaken").html("<h5>" + "Thanks for joining the GitFit Fam!" + "</h5>");
-                    newUser.css("color", "black");
+                    // var newUser = $("#usernameTaken").html("<h5>" + "Thanks for joining the GitFit Fam!" + "</h5>");
+                    // newUser.css("color", "black");
                     clearValues();
+                    window.location= "weightlog.html";
                 });
             }
         };
