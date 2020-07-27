@@ -29,20 +29,63 @@
     <script>
         $("#submit").on("click", function () {
             event.preventDefault();
-
+            
             if (!$("#username").val()) {
               var userTaken = $("#usernameTaken").html("<p><em>" + "No Empty Fields." + "</em><p>");
               userTaken.css("color", "red");
               clearValues();
             }else{
-              localStorage.setItem("userName", $("#username").val());
-              window.location = "weightlog.html";
-            }
+                $.get("/api/weight", function(data) {
+                // console.log(data);
+                  var userData = [];
+                  var newUser = $("#username").val().trim();
+                  for(var i=0; i<data.length; i++){
+                      userData.push(data[i].username);
+                  };
+                  var index = userData.indexOf(newUser);
+                  if(index != -1){
+                    localStorage.setItem("userName", $("#username").val());
+                    window.location = "weightlog.html";
+                  }else{
+                    var userTaken = $("#usernameTaken").html("<p><em>" + "Sorry! Username Does Not Exist." + "</em><p>");
+                    userTaken.css("color", "red");
+                    clearValues();
+                  }
+              
+              
+                });
+              }
+
         });
+
         function clearValues(){
             var newuser = $("#username");
             newuser.val(null);
+        }
+
+function createUser() {
+        $.get("/api/weight", function(data) {
+        // console.log(data);
+        var userData = [];
+        var newUser = $("#username").val().trim();
+        for(var i=0; i<data.length; i++){
+            userData.push(data[i].username);
         };
+        var index = userData.indexOf(newUser);
+        if(index != -1){
+            var userTaken = $("#usernameTaken").html("<p><em>" + "Sorry! Username already taken. Try again." + "</em><p>");
+                userTaken.css("color", "red");
+                clearValues();
+
+        }
+        else{
+            submitPost();
+        }
+        // console.log(userData);
+        // console.log(index);
+        // console.log(newUser);
+    });
+  };
 
 
     </script>
