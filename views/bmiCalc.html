@@ -1,100 +1,400 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bmi Calculator</title>
-    <script src="https://code.jquery.com/jquery.js"></script>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+	<link rel="stylesheet" href="css/components/ion.rangeslider.css" type="text/css" />
+	<link rel="stylesheet" href="css/custom.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://code.jquery.com/jquery.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
+	<title>GitFit | BMI Calculator</title>
 </head>
-<body>
-    <!-- * IMPERIAL BMI FORMULA *
+<body class="stretched">
+
+	<div id="wrapper" class="clearfix">
+        <!-- * IMPERIAL BMI FORMULA *
        BMI = WEIGHT(LBS)/HEIGHT(IN)"SQUARED" x 703 = RESULT-->
     
     <!-- * METRIC BMI FORMULA *
         BMI = WEIGHT(KG)/HEIGHT(M)"SQUARED" = RESULT -->
-        <div class="container">
-            <h1>BMI Calculator</h1>
-            <div class="container" id="metric">
-                <form>
-                    <label for="units">Units</label>
-                    <select name="units" id="units">
-                        <option value="Metric">Metric</option>
-                        <option value="Imperial">Imperial</option>
-                    </select><br>
-                    <br><label for="weight">Weight</label>
-                    <input type="number" id="weight" name="weight" value="">
-                    <select name="weightType" id="weightType">
-                        <option value="kg">Kg</option>
-                        <option value="Lbs">Lbs</option>
-                    </select>
-                    <br>
-                    <br><label for="height">Height</label>
-                    <input type="number" id="height" name="height" value="">
-                    <select name="heightType" id="heightType">
-                        <option value="cm">Cm</option>
-                        <option value="Inches">Inches</option>
-                    </select> <br>
-                    <br><button class = "btn btn-primary" id="calculate">Calculate</button>
-                </form>
-            </div><br>
-        <div class="container" id="results">
-                <p>Your BMI is</p>
-                <p id="yourBMI"></p>
-            </div><br>
-        <div class="container"><br>
-            <table class="table" id="bmiChart">
-                <tr>
-                    <th>BMI</th>
-                    <th>Category</th>
-                </tr>
-                <tr>
-                    <th>Less than 15</th>
-                    <th class="Unhealthycolor">Very Severly Underweight</th>
-                </tr>
-                <tr>
-                    <th>Between 15 & 16</th>
-                    <th class="Unhealthycolor">Severly Underweight</th>
-                </tr>
-                <tr>
-                    <th>Between 16 and 18.5</th>
-                    <th class="Unhealthycolor">Underweight</th>
-                </tr>
-                <tr>
-                    <th>Between 18.5 and 25</th>
-                    <th id="healthyColor">Normal(Healthy Weight)</th>
-                </tr>
-                <tr>
-                    <th>Between 25 and 30</th>
-                    <th class="Unhealthycolor">Overweight</th>
-                </tr>
-                <tr>
-                    <th>Between 30 and 35</th>
-                    <th class="healthHazard">Moderatelty Obese</th>
-                </tr>
-                <tr>
-                    <th>Between 35 and 40</th>
-                    <th class="healthHazard">Severly Obese</th>
-                </tr>
-                <tr>
-                    <th>Over 40</th>
-                    <th class="healthHazard">Very Severly Obese</th>
-                </tr>
-            </table>
-        </div>
-        </div>
-   
-    <footer>
-        <a href="/"><button><svg width="100px" height="100px" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-      </svg></button></a>
-    </footer>
 
+		<header id="header" class="transparent-header dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+						<div id="logo">
+							<a href="index.html" class="standard-logo" data-dark-logo="images/logowhite.png"><img src="images/logowhite.png" alt="gitfitlogo"></a>
+							<a href="index.html" class="retina-logo" data-dark-logo="images/logowhite.png"><img src="images/logowhite.png" alt="gitfitlogo"></a>
+						</div>
+						<div id="primary-menu-trigger">
+							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+						</div>
+						<nav class="primary-menu">
+
+							<ul class="menu-container">
+								<li class="menu-item">
+									<a class="menu-link" href="index.html"><div>Home</div></a></li>	
+								<li class="menu-item">
+									<a class="menu-link" href="createAccount.html"><div>Create Account</div></a></li>
+								<li class="menu-item">
+                                    <a class="menu-link" href="#"><div>Calculators</div></a>
+                                    <ul class="sub-menu-container">
+										<li class="menu-item">
+											<a class="menu-link" href="calories.html"><div>Calorie Calculator</div></a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="bmiCalc.html"><div>BMI Calculator</div></a>
+										</li>	
+                                        </ul>
+                                    </li>
+								<li class="menu-item mega-menu">
+									<a class="menu-link" href="exercises.html"><div>Exercises</div></a></li>
+								<li class="menu-item">
+									<a class="menu-link" href="#"><div>Explore our App</div></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header>
+		<section id="page-title" class="page-title-parallax include-header" style="background-image: url('images/BMI.png'); padding: 120px 0;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+			<div class="container clearfix">
+				<h1 data-animate="fadeInUp" style = "color: white;">BMI Calculator</h1>
+				<span data-animate="fadeInUp" data-delay="300" style = "color: white;">Find out your weight category based on our BMI calculator.</span>
+			</div>
+        </section>
+        <section id="content">
+			<div class="content-wrap">
+				<div class="container clearfix">
+					<div class="form-widget">
+                        <div class="form-result"></div>
+                        <div class="row">
+							<div class="col-lg-6">
+								<form class="row mb-0" id="fitness-form" action="include/form.php" method="post" enctype="multipart/form-data">
+									<div class="form-process">
+										<div class="css3-spinner">
+											<div class="css3-spinner-scaler"></div>
+										</div>
+									</div>
+									<div class="col-12 form-group">
+										<div class="row">
+											<div class="col-sm-2 col-form-label">
+												<label for="units">Units:</label>
+											</div>
+											<div class="col-sm-10">
+                                                <select class="form-control" id="units">
+                                                    <option value = "Metric">Metric</option>
+                                                    <option value = "Imperial">Imperial</option>
+                                                </select>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 form-group">
+										<div class="row">
+											<div class="col-sm-2 col-form-label">
+												<label for="weight">Weight:</label>
+											</div>
+											<div class="col-sm-10">
+                                                <div class="input-group">
+                                                    <input type="number" name="weight" id="weight" class="form-control required" value="" placeholder="Enter your weight">
+                                                    <select class="form-control" style="float: left;width: initial;" id = "weightType">
+                                                        <option value="kg">Kilograms</option>
+                                                        <option value="Lbs">Pounds</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+										</div>
+									</div>
+									<div class="col-12 form-group">
+										<div class="row">
+                            				<div class="col-sm-2 col-form-label">
+												<label for="Height">Height:</label>
+											</div>
+											<div class="col-sm-10">
+                                                <div class="input-group">
+                                                    <input type="number" name="height" id="height" class="form-control required" value="" placeholder="Enter your height">
+                                                    <select class="form-control" style="float: left;width: initial;" id = "heightType">
+                                                        <option value="cm">Centimeters</option>
+                                                        <option value="Inches">Inches</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+										</div>
+									</div>
+									<div class="col-12 form-group mt-3">
+										<div class="row">
+											<div class="col-sm-2 col-form-label">
+												<label for="fitness-form-activity">BMI RESULT:</label>
+											</div>
+											<div class="col-sm-10">
+												<p id = "yourBMI"></p>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 d-flex justify-content-end align-items-center">
+										<button type="button" id="calculate" class="button button-3d button-rounded button-amber">Calculate BMI</button>
+									</div>
+								</form>
+                            </div>
+                            <div class="col-lg-6">
+
+							<div class="accordion accordion-border">
+
+								<div class="accordion-header">
+									<div class="accordion-icon">
+										<i class="accordion-closed icon-ok-circle"></i>
+										<i class="accordion-open icon-remove-circle"></i>
+									</div>
+									<div class="accordion-title">
+										BMI & Weight Status
+									</div>
+								</div>
+								<div class="accordion-content">Body mass index (BMI) is a person’s weight in kilograms divided by the square of height in meters. BMI is an inexpensive and easy screening method for weight category—underweight, healthy weight, overweight, and obesity. For adults 20 years old and older, BMI is interpreted using standard weight status categories. These categories are the same for men and women of all body types and ages.
+                                    <br>
+                                    The standard weight status categories associated with BMI ranges for adults are shown below.</div>
+
+								<div class="accordion-header">
+									<div class="accordion-icon">
+										<i class="accordion-closed icon-ok-circle"></i>
+										<i class="accordion-open icon-remove-circle"></i>
+									</div>
+									<div class="accordion-title">
+										Less than 15
+									</div>
+								</div>
+								<div class="accordion-content">Very Severly Underweight</div>
+
+								<div class="accordion-header">
+									<div class="accordion-icon">
+										<i class="accordion-closed icon-ok-circle"></i>
+										<i class="accordion-open icon-remove-circle"></i>
+									</div>
+									<div class="accordion-title">
+										Between 15 & 16
+									</div>
+								</div>
+                                <div class="accordion-content">Severly Underweight</div>
+                                
+                                <div class="accordion-header">
+									<div class="accordion-icon">
+										<i class="accordion-closed icon-ok-circle"></i>
+										<i class="accordion-open icon-remove-circle"></i>
+									</div>
+									<div class="accordion-title">
+										Between 16 and 18.5
+									</div>
+								</div>
+                                <div class="accordion-content">Underweight</div>
+                                
+                                <div class="accordion-header">
+									<div class="accordion-icon">
+										<i class="accordion-closed icon-ok-circle"></i>
+										<i class="accordion-open icon-remove-circle"></i>
+									</div>
+									<div class="accordion-title">
+										Between 18.5 and 25
+									</div>
+								</div>
+                                <div class="accordion-content">Normal (Healthy Weight)</div>
+                                
+                                <div class="accordion-header">
+									<div class="accordion-icon">
+										<i class="accordion-closed icon-ok-circle"></i>
+										<i class="accordion-open icon-remove-circle"></i>
+									</div>
+									<div class="accordion-title">
+										Between 25 and 30
+									</div>
+								</div>
+                                <div class="accordion-content">Overweight</div>
+                                
+                                <div class="accordion-header">
+									<div class="accordion-icon">
+										<i class="accordion-closed icon-ok-circle"></i>
+										<i class="accordion-open icon-remove-circle"></i>
+									</div>
+									<div class="accordion-title">
+										Between 30 and 35
+									</div>
+								</div>
+                                <div class="accordion-content">Moderately Obese</div>
+
+                                <div class="accordion-header">
+									<div class="accordion-icon">
+										<i class="accordion-closed icon-ok-circle"></i>
+										<i class="accordion-open icon-remove-circle"></i>
+									</div>
+									<div class="accordion-title">
+										Between 35 and 40
+									</div>
+								</div>
+                                <div class="accordion-content">Severely Obese</div>
+
+                                <div class="accordion-header">
+									<div class="accordion-icon">
+										<i class="accordion-closed icon-ok-circle"></i>
+										<i class="accordion-open icon-remove-circle"></i>
+									</div>
+									<div class="accordion-title">
+										Over 40
+									</div>
+								</div>
+                                <div class="accordion-content">Very Severely Obese</div>
+                                
+							</div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+		<footer id="footer" class="dark">
+			<div class="container">
+				<div class="footer-widgets-wrap">
+
+					<div class="row col-mb-10 mt-0">
+						<div class="col-md-6 col-lg-4">
+							<div class="widget clearfix">
+								<img src="images/logowhite.png" alt="Image" class="footer-logo" style = "height:150px;">
+								<p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Easy</strong> approaches to fitness. Browse the amazing features this app offers.</p>
+								<p class="mb-3">Copyrights &copy; 2020 All Rights Reserved GitFit Inc.</p>
+							</div>
+
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+
+							<div class="widget clearfix">
+								<h4>Client Testimonials</h4>
+
+								<div class="fslider testimonial no-image bg-transparent border-0 shadow-none p-0" data-animation="slide" data-arrows="false">
+									<div class="flexslider">
+										<div class="slider-wrap">
+											<div class="slide">
+												<div class="testi-image">
+													<a href="#"><img src="images/testimonials/3.jpg" alt="Customer Testimonails"></a>
+												</div>
+												<div class="testi-content">
+													<p>After joining GitFit, I realized how slowly my weight was going down. I wanted to ramp things up and I was in the perfect place! I used the calorie calculator to find out how many calories I should eat! Turns out I was eating way too much! Now I'm 40 pounds down. Thanks GitFit!</p>
+													<div class="testi-meta">
+														Steve Jobs
+														<span>Apple Inc.</span>
+													</div>
+												</div>
+											</div>
+											<div class="slide">
+												<div class="testi-image">
+													<a href="#"><img src="images/testimonials/2.jpg" alt="Customer Testimonails"></a>
+												</div>
+												<div class="testi-content">
+													<p>I have been a member of GitFit for 2 weeks now and I can't imagine how my life was before it! So easy to use and really helps me visualize how my weight fluctuates over time. Also, look at that user interface! Love GitFit!</p>
+													<div class="testi-meta">
+														Elon Musk
+														<span>Tesla, SpaceX</span>
+													</div>
+												</div>
+											</div>
+											<div class="slide">
+												<div class="testi-image">
+													<a href="#"><img src="images/testimonials/1.jpg" alt="Customer Testimonails"></a>
+												</div>
+												<div class="testi-content">
+													<p>This app has nothing to do with Github but boy did it help me GitFit!! I especially loved the exercises feature of it. Sometimes you get stuck trying to figure out what exercises to do so you end up not doing anything! This has it all for me!</p>
+													<div class="testi-meta">
+														Bill Gates
+														<span>Microsoft</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="widget clearfix">
+
+								<a href="#" class="social-icon si-small si-rounded si-facebook">
+									<i class="icon-facebook"></i>
+									<i class="icon-facebook"></i>
+								</a>
+
+								<a href="https://github.com/JessYRaMa/GitFit" class="social-icon si-small si-rounded si-github">
+									<i class="icon-github"></i>
+									<i class="icon-github"></i>
+								</a>
+
+								<a href="#" class="social-icon si-small si-rounded si-linkedin">
+									<i class="icon-linkedin"></i>
+									<i class="icon-linkedin"></i>
+								</a>
+
+							</div>
+
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+
+							<div class="widget quick-contact-widget form-widget clearfix">
+
+								<h4>Send us a message!</h4>
+
+								<div class="form-result"></div>
+
+								<form id="quick-contact-form" name="quick-contact-form" action="include/form.php" method="post" class="quick-contact-form mb-0">
+
+									<div class="form-process">
+										<div class="css3-spinner">
+											<div class="css3-spinner-scaler"></div>
+										</div>
+									</div>
+									<div class="input-group mx-auto">
+										<div class="input-group-prepend">
+											<div class="input-group-text"><i class="icon-user"></i></div>
+										</div>
+										<input type="text" class="required form-control" id="quick-contact-form-name" name="quick-contact-form-name" value="" placeholder="Full Name" />
+									</div>
+									<div class="input-group mx-auto">
+										<div class="input-group-prepend">
+											<div class="input-group-text"><i class="icon-email2"></i></div>
+										</div>
+										<input type="text" class="required form-control email" id="quick-contact-form-email" name="quick-contact-form-email" value="" placeholder="Email Address" />
+									</div>
+									<textarea class="required form-control input-block-level short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="4" cols="30" placeholder="Message"></textarea>
+									<input type="text" class="d-none" id="quick-contact-form-botcheck" name="quick-contact-form-botcheck" value="" />
+									<input type="hidden" name="prefix" value="quick-contact-form-">
+									<button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit" class="button button-3d button-rounded button-leaf" value="submit">Send Email</button>
+
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+	<div id="gotoTop" class="icon-angle-up"></div>
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.min.js"></script>
+	<script src="js/components/rangeslider.min.js"></script>
+	<script src="js/functions.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
     <script type="text/javascript" src="bmiCalc.js"></script>
 </body>
 </html>
