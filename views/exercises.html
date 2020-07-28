@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
+	<link rel="stylesheet" href="css/custom.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
+    <title>GitFit | Exercises</title>
+
+</head>
+
+<body class="stretched">
+	<div id="wrapper" class="clearfix">
+		<header id="header" class="transparent-header dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+						<div id="logo">
+							<a href="index.html" class="standard-logo" data-dark-logo="images/logowhite.png"><img src="images/logowhite.png" alt="gitfitlogo"></a>
+							<a href="index.html" class="retina-logo" data-dark-logo="images/logowhite.png"><img src="images/logowhite.png" alt="gitfitlogo"></a>
+						</div>
+						<div id="primary-menu-trigger">
+							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+						</div>
+						<nav class="primary-menu">
+
+							<ul class="menu-container">
+								<li class="menu-item">
+									<a class="menu-link" href="index.html"><div>Home</div></a></li>	
+								<li class="menu-item">
+									<a class="menu-link" href="createAccount.html"><div>Create Account</div></a></li>
+								<li class="menu-item">
+                                    <a class="menu-link" href="#"><div>Calculators</div></a>
+                                    <ul class="sub-menu-container">
+										<li class="menu-item">
+											<a class="menu-link" href="calories.html"><div>Calorie Calculator</div></a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="bmiCalc.html"><div>BMI Calculator</div></a>
+										</li>	
+                                        </ul>
+                                    </li>
+								<li class="menu-item mega-menu">
+									<a class="menu-link" href="#"><div>Exercises</div></a></li>
+								<li class="menu-item">
+									<a class="menu-link" href="#"><div>Explore our App</div></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+        </header>
+        <section id="page-title" class="page-title-parallax include-header" style="background-image: url('images/exercise2.png'); padding: 120px 0;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+			<div class="container clearfix">
+				<h1 data-animate="fadeInUp" style = "color: white;">Exercises</h1>
+				<span data-animate="fadeInUp" data-delay="300" style = "color: white;">Have a hard time thinking of exercises to do? Check out some of our favorites.</span>
+			</div>
+		</section>
+		</section>
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container clearfix">
+
+					<div id="portfolio-ajax-wrap">
+						<div id="portfolio-ajax-container"></div>
+					</div>
+
+					<div id="portfolio-ajax-loader">
+						<div class="css3-spinner">
+							<div class="css3-spinner-ball-scale-multiple">
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="grid-filter-wrap">
+						<ul class="grid-filter" data-container="#portfolio">
+							<li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
+							<li><a href="#" data-filter=".pf-cardio">Cardio</a></li>
+							<li><a href="#" data-filter=".pf-strength">Strength Training</a></li>
+							<li><a href="#" data-filter=".pf-body">Body Weight</a></li>
+							<li><a href="#" data-filter=".pf-hiit">HIIT</a></li>
+							<li><a href="#" data-filter=".pf-sports">Sports</a></li>
+						</ul>
+
+						<div class="grid-shuffle rounded" data-container="#portfolio">
+							<i class="icon-random"></i>
+						</div>
+
+					</div>
+					<div id="portfolio" class="portfolio portfolio-ajax row grid-container gutter-20" data-layout="fitRows">
+						<article id="portfolio-item-1" data-loader="include/ajax/portfolio-ajax-image.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-strength pf-body">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/pilates.png" alt="pilates">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=M43CvYO3EOw" target = "_blank">Reformer Pilates</a></h3>
+									<span>Strength Training, Body Weight</span>
+								</div>
+							</div>
+						</article>
+						<article id="portfolio-item-2" data-loader="include/ajax/portfolio-ajax-image.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-sports">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/tennis.png" alt="tennis">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=9sBL1WsREyE" target = "_blank">Tennis</a></h3>
+									<span>Sports</span>
+								</div>
+							</div>
+						</article>
+
+						<article id="portfolio-item-3" data-loader="include/ajax/portfolio-ajax-video.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-graphics pf-cardio">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/cycling.png" alt="cycling">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=JoBBRXRTDQc" target = "_blank">Indoor Cycling</a></h3>
+									<span>Cardio</span>
+								</div>
+							</div>
+						</article>
+
+						<article id="portfolio-item-4" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-icons pf-strength">
+                            <div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/deadlift.png" alt="Deadlift">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=VL5Ab0T07e4" target = "_blank">Deadlifts</a></h3>
+									<span>Strength Training</span>
+								</div>
+							</div>
+						</article>
+
+						<article id="portfolio-item-5" data-loader="include/ajax/portfolio-ajax-image.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-uielements pf-sports pf-cardio">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/golf.png" alt="golf">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=xxi4zG0Mig0" target = "_blank">Golfing</a></h3>
+									<span>Sports, Cardio</span>
+								</div>
+							</div>
+						</article>
+
+						<article id="portfolio-item-6" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-graphics pf-strength pf-hiit">
+                            <div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/handstand.png" alt="handstand">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=iVvEc1hYI3M" target = "_blank">Handstand Pushups</a></h3>
+									<span>Strength Training, HIIT</span>
+								</div>
+						</article>
+
+						<article id="portfolio-item-7" data-loader="include/ajax/portfolio-ajax-video.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-uielements pf-cardio pf-hiit">
+                            <div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/jumprope.png" alt="jumprope">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=1BZM2Vre5oc" target = "_blank">Jump Rope</a></h3>
+									<span>Cardio, HIIT</span>
+								</div>
+						</article>
+
+						<article id="portfolio-item-8" data-loader="include/ajax/portfolio-ajax-image.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-strength pf-hiit">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/kettlebell.png" alt="kettlebell">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=YSxHifyI6s8" target = "_blank">Kettlebell Swings</a></h3>
+									<span>Strength Training, HIIT</span>
+								</div>
+						</article>
+
+						<article id="portfolio-item-9" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-illustrations pf-hiit">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/kickbox.png" alt="kickboxing">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=WMNm7ZsHl0Y" target = "_blank">Kickboxing</a></h3>
+									<span>HIIT</span>
+								</div>
+						</article>
+
+						<article id="portfolio-item-10" data-loader="include/ajax/portfolio-ajax-video.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-graphics pf-media pf-hiit">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/medball.png" alt="medball">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=g3El7_Ioaro" target = "_blank">Med Ball Knee Strikes</a></h3>
+									<span>HIIT</span>
+								</div>
+						</article>
+
+						<article id="portfolio-item-11" data-loader="include/ajax/portfolio-ajax-image.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-strength">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/overhead.png" alt="overhead">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=X-iV-cG8cYs" target = "_blank">Overhead Tricep Extension</a></h3>
+									<span>Strength Training</span>
+								</div>
+						</article>
+
+						<article id="portfolio-item-12" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-strength pf-hiit">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/pullup.png" alt="pullup">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=jVzrLDIRqnE" target = "_blank">Burpee Pull Ups</a></h3>
+									<span>Strength Training, HIIT</span>
+								</div>
+                        </article>
+                        
+                        <article id="portfolio-item-13" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-hiit">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/ropes.png" alt="ropes">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=4QBijbCsFIw" target = "_blank">Tabata Ropes</a></h3>
+									<span>HIIT</span>
+								</div>
+                        </article>
+                        
+                        <article id="portfolio-item-14" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-body pf-strength">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/pushup.png" alt="pushup">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=IODxDxX7oi4" target = "_blank">Pushup</a></h3>
+									<span>Strength Training, Body Weight</span>
+								</div>
+                        </article>
+                        
+                        <article id="portfolio-item-15" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-body pf-strength">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/row.png" alt="row">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=ML1L5ytxLMY" target = "_blank">Barbell Row</a></h3>
+									<span>Strength Training</span>
+								</div>
+                        </article>
+                        
+                        <article id="portfolio-item-16" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-body">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/side plank.png" alt="sideplank">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=K2VljzCC16g" target = "_blank">Side Plank</a></h3>
+									<span>Body Weight</span>
+								</div>
+                        </article>
+                        
+                        <article id="portfolio-item-16" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-body">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/yoga.png" alt="yoga">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=v7AYKMP6rOE" target = "_blank">Yoga</a></h3>
+									<span>Body Weight</span>
+								</div>
+                        </article>
+                        
+                        <article id="portfolio-item-17" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-cardio pf-sports">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/swim.png" alt="swim">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=gh5mAtmeR3Y" target = "_blank">Swimming</a></h3>
+									<span>Sports, Cardio</span>
+								</div>
+                        </article>
+                        
+                        <article id="portfolio-item-18" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-strength">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/turkish.png" alt="turkish">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=0bWRPC49-KI" target = "_blank">Turkish Get-Ups</a></h3>
+									<span>Strength Training</span>
+								</div>
+                        </article>
+                        
+                        <article id="portfolio-item-19" data-loader="include/ajax/portfolio-ajax-slider.php" class="portfolio-item col-lg-3 col-md-4 col-sm-6 col-12 pf-strength pf-body">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+										<img src="images/exercises page/split squat.png" alt="split">
+								</div>
+								<div class="portfolio-desc">
+									<h3><a href="https://www.youtube.com/watch?v=2C-uNgKwPLE" target = "_blank">Bulgarian Split Squat</a></h3>
+									<span>Strength Training, Body Weight</span>
+								</div>
+                            </article>
+
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+        <footer id="footer" class="dark">
+            <div class="container">
+                <div class="footer-widgets-wrap">
+    
+                    <div class="row col-mb-10 mt-0">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="widget clearfix">
+                                <img src="images/logowhite.png" alt="Image" class="footer-logo" style = "height:150px;">
+                                <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Easy</strong> approaches to fitness. Browse the amazing features this app offers.</p>
+                                <p class="mb-3">Copyrights &copy; 2020 All Rights Reserved GitFit Inc.</p>
+                            </div>
+    
+                        </div>
+    
+                        <div class="col-md-6 col-lg-4">
+    
+                            <div class="widget clearfix">
+                                <h4>Client Testimonials</h4>
+    
+                                <div class="fslider testimonial no-image bg-transparent border-0 shadow-none p-0" data-animation="slide" data-arrows="false">
+                                    <div class="flexslider">
+                                        <div class="slider-wrap">
+                                            <div class="slide">
+                                                <div class="testi-image">
+                                                    <a href="#"><img src="images/testimonials/3.jpg" alt="Customer Testimonails"></a>
+                                                </div>
+                                                <div class="testi-content">
+                                                    <p>After joining GitFit, I realized how slowly my weight was going down. I wanted to ramp things up and I was in the perfect place! I used the calorie calculator to find out how many calories I should eat! Turns out I was eating way too much! Now I'm 40 pounds down. Thanks GitFit!</p>
+                                                    <div class="testi-meta">
+                                                        Steve Jobs
+                                                        <span>Apple Inc.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="testi-image">
+                                                    <a href="#"><img src="images/testimonials/2.jpg" alt="Customer Testimonails"></a>
+                                                </div>
+                                                <div class="testi-content">
+                                                    <p>I have been a member of GitFit for 2 weeks now and I can't imagine how my life was before it! So easy to use and really helps me visualize how my weight fluctuates over time. Also, look at that user interface! Love GitFit!</p>
+                                                    <div class="testi-meta">
+                                                        Collis Ta'eed
+                                                        <span>Envato Inc.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="testi-image">
+                                                    <a href="#"><img src="images/testimonials/1.jpg" alt="Customer Testimonails"></a>
+                                                </div>
+                                                <div class="testi-content">
+                                                    <p>This app has nothing to do with Github but boy did it help me GitFit!! I especially loved the exercises feature of it. Sometimes you get stuck trying to figure out what exercises to do so you end up not doing anything! This has it all for me!</p>
+                                                    <div class="testi-meta">
+                                                        Bill Gates
+                                                        <span>Microsoft</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <div class="widget clearfix">
+    
+                                <a href="#" class="social-icon si-small si-rounded si-facebook">
+                                    <i class="icon-facebook"></i>
+                                    <i class="icon-facebook"></i>
+                                </a>
+    
+                                <a href="https://github.com/JessYRaMa/GitFit" class="social-icon si-small si-rounded si-github">
+                                    <i class="icon-github"></i>
+                                    <i class="icon-github"></i>
+                                </a>
+    
+                                <a href="#" class="social-icon si-small si-rounded si-linkedin">
+                                    <i class="icon-linkedin"></i>
+                                    <i class="icon-linkedin"></i>
+                                </a>
+    
+                            </div>
+    
+                        </div>
+    
+                        <div class="col-md-6 col-lg-4">
+    
+                            <div class="widget quick-contact-widget form-widget clearfix">
+    
+                                <h4>Send us a message!</h4>
+    
+                                <div class="form-result"></div>
+    
+                                <form id="quick-contact-form" name="quick-contact-form" action="include/form.php" method="post" class="quick-contact-form mb-0">
+    
+                                    <div class="form-process">
+                                        <div class="css3-spinner">
+                                            <div class="css3-spinner-scaler"></div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mx-auto">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="icon-user"></i></div>
+                                        </div>
+                                        <input type="text" class="required form-control" id="quick-contact-form-name" name="quick-contact-form-name" value="" placeholder="Full Name" />
+                                    </div>
+                                    <div class="input-group mx-auto">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="icon-email2"></i></div>
+                                        </div>
+                                        <input type="text" class="required form-control email" id="quick-contact-form-email" name="quick-contact-form-email" value="" placeholder="Email Address" />
+                                    </div>
+                                    <textarea class="required form-control input-block-level short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="4" cols="30" placeholder="Message"></textarea>
+                                    <input type="text" class="d-none" id="quick-contact-form-botcheck" name="quick-contact-form-botcheck" value="" />
+                                    <input type="hidden" name="prefix" value="quick-contact-form-">
+                                    <button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit" class="button button-3d button-rounded button-leaf" value="submit">Send Email</button>
+    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.min.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="js/functions.js"></script>
+
+</body>
+</html>
