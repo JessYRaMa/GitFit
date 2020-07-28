@@ -110,11 +110,15 @@ $("#deleteGraph").on("click", function(){
         data: {
             labels: labels,
             datasets: [{
-                label: 'Weight',
+                label: 'WEIGHT (LBS)',
                 data: dataSet,
                 backgroundColor: '#ffffff00',
                 borderColor: "#1DC995",
-                borderWidth: 3
+                borderWidth: 3,
+                pointBorderColor: '#808080',
+                pointBackgroundColor: '#808080',
+                pointBorderWidth: 5,
+                
             }]
         },
         options: {
@@ -130,8 +134,16 @@ $("#deleteGraph").on("click", function(){
                 display: false,
             },
             legend: {
-                display: false,
+                display: true,
             },
+            layout: {
+                padding: {
+                    left: 20,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            }     
         }
     });
 
@@ -165,7 +177,6 @@ function submitPost(newPost) {
      } else{
         addData();
         getPostData();
-        clearValues();
 
         var newPost = {
             username: newuser,
@@ -176,6 +187,7 @@ function submitPost(newPost) {
           };
         $.post("/api/weight", newPost, function() {
           console.log(newPost);
+          clearValues();
         });
      }
   }
@@ -198,9 +210,8 @@ function removeData() {
 
 function deletePost(id) {
     if (id == -1){
-        console.log(id);
-        console.log("not deleted");
-        alert("ERROR! NO EVIDENCE TO REMOVE!!!");
+        var empty = $("#noValue").html("<p><em>" + "Error. No value to remove. Try again." + "</em><p>");
+        empty.css("color", "red");
     } else{
 
         removeData();

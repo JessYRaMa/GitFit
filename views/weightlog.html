@@ -80,7 +80,7 @@
                             <div class="mx-auto" style="max-width: 700px; min-height: 350px;">
                                 <canvas id="myChart"></canvas>
                             </div>
-                            <div class="line line-lg"></div>
+                            <div class="line line-lg mt-3 mb-5"></div>
                     <div class="row mt-0">
                         <div class="card mx-auto rounded-0 border-0" style="max-width: 600px; background-color: rgba(255,255,255,0.93);">
                             <div class="card-body" style="padding-top:0px;">
@@ -89,22 +89,22 @@
                         <form>
                         <div class="col-12 form-group">
                             <label for="login-form-date">Date:</label>
-                            <input type="date" id="newLabel" name="login-form-date" value="" class="form-control not-dark" />
+                            <input type="date" id="newLabel" name="lnewLabe" value="" class="form-control not-dark" />
                         </div>
 
                         <div class="col-12 form-group">
                             <label for="login-form-weight">Weight(lbs.):</label>
-                            <input type="number" min = "10" max = "300" id="data" name="login-form-weight" value="" class="form-control not-dark" />
+                            <input type="number" min = "10" max = "300" id="data" name="data" value="" class="form-control not-dark" />
                         </div>
 
                         <div class="col-12 form-group">
                             <label for="login-form-height">Height(in.):</label>
-                            <input type="number" min = "10" max = "100" id="height" name="login-form-height" value="" class="form-control not-dark" />
+                            <input type="number" min = "10" max = "100" id="height" name="lheightt" value="" class="form-control not-dark" />
                         </div>
 
                         <div class="col-12 form-group">
                             <label for="login-form-age">Age:</label>
-                            <input type="number" min = "1" max = "100" id="age" name="login-form-age" value="" class="form-control not-dark" />
+                            <input type="number" min = "1" max = "100" id="age" name="lage" value="" class="form-control not-dark" />
                         </div>
 
                         <div class="col-12 form-group">
@@ -117,7 +117,8 @@
                     <div class="card-body" style="padding-top:0px;"> 
                         <h4>Delete your progress:</h4> 
                         <br>
-                        <br>    
+                        <br>  
+                        <div id = "noValue"></div>  
                         <form>
                             <div class="col-12 form-group">
                                 <label for="login-form-delete">Date to Remove:</label>
