@@ -3,10 +3,16 @@ var dataSet = [];
 var users = [];
 var dataUse = [];
 var localUserName = window.localStorage.userName;
+var sortedLabels = [];
+var sortedData = [];
+var newArrayLabel = [];
+var newArrayData = [];
+
+var main = $(".title").html("<h3>" + "Welcome to " + "<b>" + localUserName + "</b>" + "'s Progress Log" + "</h3>");
+main.attr("class", "mb-5");
 
 $("#currentUser").attr("value", localUserName);
 var newUser = localUserName;
-//localUserName;
 
 function getPostData() {
     $.get("/api/weight", function(data) {
@@ -16,25 +22,47 @@ function getPostData() {
             if(data[i].username === newUser){
             labels.push(moment(data[i].logged_at).format('L'));
             dataSet.push(data[i].weight);
+
+            // //experimental sort
+            // var sortlabel = bubbleSort(labels);;
+            // console.log("sorted labels",sortlabel);
+            // var sortdata = bubbleSort(dataSet);
+            // console.log("sorted data",sortdata);
+            
             };
             if(users.indexOf(data[i].username) === -1){
                 users.push(data[i].username);
             }
             dataUse.push(data[i]);
         };
+        for (var i=0; i<dataUse.length; i++){
+            if(newUser === dataUse[i].username){
+                console.log("logged", (moment(dataUse[i].logged_at).format('L')));
+                console.log("weight", dataUse[i].weight);
+                newArrayLabel.push((moment(dataUse[i].logged_at).format('L')));
+                newArrayData.push(dataUse[i].weight);
+                console.log(newArrayData);
+                console.log(newArrayLabel);
+            }
+        }
         myChart.update();
-       //UserDropdown();    
-
+       //UserDropdown();
        resetGraph();
        createGraph();
        dropDown(); 
 
-       sortLD();
+            // var sortlabel = bubbleSort(labels);
+            // console.log("sorted labels",sortlabel);
+            // for (var i=0; i< sortlabel.length; i++){
+            //     sortedLabels.push(sortlabel);
+            // }
     
     });
   };
 
   getPostData();
+  console.log(dataSet);
+  console.log(labels);
 
   function dropDown(){
       $("#dataRemove").html('<option value="" disabled selected>Want to delete one?</option>');
@@ -42,13 +70,6 @@ function getPostData() {
         $('#dataRemove').append('<option value="'+ labels[i]+'">'+labels[i]+'</option>');
     };
 }
-
-// function UserDropdown(){
-//     $("#currentUser").html('<option value="'+localUserName+'">'+localUserName+'</option>' || '<option value="" selected = "selected">Select Your Username!</option>');
-//     for(var i=0; i<users.length; i++){
-//         $('#currentUser').append('<option value="'+users[i]+'">'+users[i]+'</option>');
-//     };
-// }
 
 function getId(){
     var toDelete = $("#dataRemove").val().trim();
@@ -61,7 +82,6 @@ function getId(){
             console.log("logged", (moment(dataUse[i].logged_at).format('L')));
             console.log("to delete", toDelete);
             console.log("newUser", newUser);
-
             if(newUser == dataUse[i].username && toDelete == (moment(dataUse[i].logged_at).format('L'))){
                     return(dataUse[i].id);
             } 
@@ -69,6 +89,7 @@ function getId(){
 
         return -1;
 };
+
 
  function createGraph(){
     var currentUser = localUserName;
@@ -98,17 +119,6 @@ $("#deleteGraph").on("click", function(){
     resetGraph(); 
 });
 
-
-// $("#currentUser").on("change", function(){
-//     if(this.selectedIndex){
-//         // localStorage.setItem("selected",($(this).val()));
-//         // console.log(localStorage.getItem("selected"));
-//         resetGraph();
-//         createGraph();
-//         dropDown(); 
-//     }
-// })
-
 //chart creation
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -119,29 +129,25 @@ $("#deleteGraph").on("click", function(){
                 label: 'Weight',
                 data: dataSet,
                 backgroundColor: '#ffffff00',
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 2
+                borderColor: "#1DC995",
+                borderWidth: 3
             }]
         },
         options: {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: false
-                    }
-                }]
+                        beginAtZero: false,
+                        labels: "lbs"
+                    },
+                }],
             },
             title: {
-                display: true,
-                text: 'Weight Log' + ': ' + localUserName
-            }
+                display: false,
+            },
+            legend: {
+                display: false,
+            },
         }
     });
 
@@ -169,10 +175,13 @@ function submitPost(newPost) {
      var newheight = $("#height");
 
      if(!(logged.val() && newData.val() && newheight.val() && newage.val())){
-       alert("no empty fields");
+        var empty = $("#noEmpty").html("<p><em>" + "Please fill in all fields." + "</em><p>");
+                empty.css("color", "red");
+                clearValues();
      } else{
         addData();
         getPostData();
+        clearValues();
 
         var newPost = {
             username: newuser,
@@ -225,7 +234,30 @@ function deletePost(id) {
     }
   }
 
+  function clearValues(){
+    var newData = $("#data");
+     var newage = $("#age");
+     var logged = $("#newLabel");
+     var newheight = $("#height");
+    newData.val(null);
+    newage.val(null);
+    logged.val(null);
+    newheight.val(null);
+};
 
+  //BUBBLE SORT
+  function bubbleSort(arr){
+    for (var i = arr.length; i > 0; i--){
+        for(var j = 0; j < i-1; j++){
+            if(arr[j] > arr[j+1]){
+                var temp = arr[j];
+                arr [j]= arr[j+1];
+                arr[j+1] = temp;
+            };
+        };
+    };
+    return arr;
+}
 
 //  ACCESS LABELS AND DATASET ERROR (labelsArry empty etc)
   function sortLD(){
@@ -299,5 +331,26 @@ function DebugMe(location){
     "\t\t Idea5: ...\n", 
     "\n----------------------------------------------------------------------------\n");
 }
+
+// function sort(){
+//     arrayOfObj = labels.map(function(d, i) {
+//         return {
+//           label: d,
+//           data: dataSet[i] || 0
+//         };
+//       });
+      
+//       sortedArrayOfObj = arrayOfObj.sort(function(a, b) {
+//         return b.data - a.data;
+//       });
+      
+//       sortedArrayOfObj.forEach(function(d){
+//         newArrayLabel.push(d.label);
+//         newArrayData.push(d.data);
+//       });
+      
+//       console.log("new array",newArrayLabel);
+//       console.log("newdata" , newArrayData);      
+// };
 
 
