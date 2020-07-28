@@ -3,10 +3,6 @@ var dataSet = [];
 var users = [];
 var dataUse = [];
 var localUserName = window.localStorage.userName;
-// var sortedLabels = [];
-// var sortedData = [];
-// var newArrayLabel = [];
-// var newArrayData = [];
 
 //chart title
 var main = $(".title").html("<h3>" + "Welcome to " + "<b>" + localUserName + "</b>" + "'s Progress Log" + "</h3>");
@@ -36,16 +32,6 @@ function getPostData() {
             }
             dataUse.push(data[i]);
         };
-        for (var i=0; i<dataUse.length; i++){
-            if(newUser === dataUse[i].username){
-                console.log("logged", (moment(dataUse[i].logged_at).format('L')));
-                console.log("weight", dataUse[i].weight);
-                newArrayLabel.push((moment(dataUse[i].logged_at).format('L')));
-                newArrayData.push(dataUse[i].weight);
-                console.log(newArrayData);
-                console.log(newArrayLabel);
-            }
-        }
         myChart.update();
        //UserDropdown();
        resetGraph();
@@ -60,10 +46,7 @@ function getPostData() {
     
     });
   };
-
   getPostData();
-  console.log(dataSet);
-  console.log(labels);
 
   function dropDown(){
       $("#dataRemove").html('<option value="" disabled selected>Want to delete one?</option>');
