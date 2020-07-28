@@ -146,6 +146,145 @@ $("#deleteGraph").on("click", function(){
             }     
         }
     });
+$("#lineChart").on("click", function(){
+    var ctx = document.getElementById('myChart').getContext('2d');
+    myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'WEIGHT (LBS)',
+                data: dataSet,
+                backgroundColor: '#ffffff00',
+                borderColor: "#1DC995",
+                borderWidth: 3,
+                pointBorderColor: '#808080',
+                pointBackgroundColor: '#808080',
+                pointBorderWidth: 5,
+                
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false,
+                        labels: "lbs"
+                    },
+                }],
+            },
+            title: {
+                display: false,
+            },
+            legend: {
+                display: true,
+            },
+            layout: {
+                padding: {
+                    left: 20,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            }     
+        }
+    });
+    myChart.update();
+});    
+
+$("#barChart").on("click", function(){
+    var ctx = document.getElementById('myChart').getContext('2d');
+     myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'WEIGHT (LBS)',
+                data: dataSet,
+                backgroundColor: '#ffffff00',
+                borderColor: "#1DC995",
+                borderWidth: 3,
+                pointBorderColor: '#808080',
+                pointBackgroundColor: '#808080',
+                pointBorderWidth: 5,
+                
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false,
+                        labels: "lbs"
+                    },
+                }],
+            },
+            title: {
+                display: false,
+            },
+            legend: {
+                display: true,
+            },
+            events: 'click',
+            layout: {
+                padding: {
+                    left: 20,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            }     
+        }
+    });
+    myChart.update();
+});
+
+$("#polarChart").on("click", function(){
+    var ctx = document.getElementById('myChart').getContext('2d');
+     myChart = new Chart(ctx, {
+        type: 'polarArea',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'WEIGHT (LBS)',
+                data: dataSet,
+                backgroundColor: '#ffffff00',
+                borderColor: "#1DC995",
+                borderWidth: 3,
+                pointBorderColor: '#808080',
+                pointBackgroundColor: '#808080',
+                pointBorderWidth: 5,
+                
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false,
+                        labels: "lbs"
+                    },
+                }],
+            },
+            title: {
+                display: false,
+            },
+            legend: {
+                display: true,
+            },
+            events: 'click',
+            layout: {
+                padding: {
+                    left: 20,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            }     
+        }
+    });
+    myChart.update();
+});
 
  $("#addBtn").on("click",function(){
      event.preventDefault();
@@ -252,6 +391,27 @@ function deletePost(id) {
         };
     };
     return arr;
+}
+function parseVisibleItems(chart, handler) {
+	var datasets = chart.data.datasets;
+	var meta, i, j, ilen, jlen;
+
+	for (i = 0, ilen = datasets.length; i < ilen; ++i) {
+		if (!chart.isDatasetVisible(i)) {
+			continue;
+		}
+
+		meta = chart.getDatasetMeta(i);
+		for (j = 0, jlen = meta.data.length; j < jlen; ++j) {
+			var element = meta.data[j];
+			if (!element.hasOwnProperty('_view')) {
+				continue;
+			}
+			if (!element._view.skip) {
+				handler(element);
+			}
+		}
+	}
 }
 
 //  ACCESS LABELS AND DATASET ERROR (labelsArry empty etc)
