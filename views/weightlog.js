@@ -3,11 +3,12 @@ var dataSet = [];
 var users = [];
 var dataUse = [];
 var localUserName = window.localStorage.userName;
-var sortedLabels = [];
-var sortedData = [];
-var newArrayLabel = [];
-var newArrayData = [];
+// var sortedLabels = [];
+// var sortedData = [];
+// var newArrayLabel = [];
+// var newArrayData = [];
 
+//chart title
 var main = $(".title").html("<h3>" + "Welcome to " + "<b>" + localUserName + "</b>" + "'s Progress Log" + "</h3>");
 main.attr("class", "mb-5");
 
