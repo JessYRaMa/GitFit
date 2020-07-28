@@ -1,4 +1,5 @@
 var mysql = require("mysql");
+require("dotenv").config();
 
 //change connection to include JAWSDB
 var connection;
@@ -8,11 +9,11 @@ if (process.env.JAWSDB_URL) {
 } else {
     // Database is local
     connection = mysql.createConnection({
-        port: 3306,
-        host: 'localhost',
-        user: 'root',
-        password: 'Cabuntucan1@',
-        database: 'weight_db'
+        port: process.env.DB_PORT,
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB_BASE
     })
 };
 
