@@ -13,7 +13,7 @@ main.attr("class", "mb-5");
 
 function getPostData() {
     $.get("/api/weight", function(data) {
-        console.log(data);
+        // console.log(data);
         var newUser = localUserName;
         for(var i=0; i<data.length; i++){
             if(data[i].username === newUser){
