@@ -17,8 +17,8 @@ function getPostData() {
         var newUser = localUserName;
         for(var i=0; i<data.length; i++){
             if(data[i].username === newUser){
-            labels.push(moment(data[i].logged_at).format('L'));
-            dataSet.push(data[i].weight);
+            labels.push(JSON.stringify(moment(data[i].logged_at).format('L')).slice(1,-1));
+            dataSet.push(parseInt(JSON.stringify(data[i].weight)));
 
             // //experimental sort
             // var sortlabel = bubbleSort(labels);;
@@ -32,7 +32,10 @@ function getPostData() {
             }
             dataUse.push(data[i]);
         };
+        labels, dataSet = bubbleSort(labels, dataSet);
         myChart.update();
+        // DebugMe("getPostData");
+
        //UserDropdown();
        resetGraph();
        createGraph();
@@ -80,14 +83,15 @@ function getId(){
     $.get("/api/weight", function(data) {
         for(var i=0; i<data.length; i++){
             if(data[i].username === currentUser){
-            labels.push(moment(data[i].logged_at).format('L'));
-            dataSet.push(data[i].weight);
+                labels.push(JSON.stringify(moment(data[i].logged_at).format('L')).slice(1,-1));
+                dataSet.push(parseInt(JSON.stringify(data[i].weight)));
             dropDown();
             };
             if(users.indexOf(data[i].username) === -1){
                 users.push(data[i].username);
             }
         };
+        labels, dataSet = bubbleSort(labels, dataSet);
         myChart.update();
     });
 }
@@ -380,39 +384,43 @@ function deletePost(id) {
 };
 
   //BUBBLE SORT
-  function bubbleSort(arr){
+  function bubbleSort(arr, arr2){
     for (var i = arr.length; i > 0; i--){
         for(var j = 0; j < i-1; j++){
             if(arr[j] > arr[j+1]){
                 var temp = arr[j];
                 arr [j]= arr[j+1];
                 arr[j+1] = temp;
+
+                var temp2 = arr2[j];
+                arr2 [j]= arr2[j+1];
+                arr2[j+1] = temp2;
             };
         };
     };
-    return arr;
+    return arr, arr2;
 }
-function parseVisibleItems(chart, handler) {
-	var datasets = chart.data.datasets;
-	var meta, i, j, ilen, jlen;
+// function parseVisibleItems(chart, handler) {
+// 	var datasets = chart.data.datasets;
+// 	var meta, i, j, ilen, jlen;
 
-	for (i = 0, ilen = datasets.length; i < ilen; ++i) {
-		if (!chart.isDatasetVisible(i)) {
-			continue;
-		}
+// 	for (i = 0, ilen = datasets.length; i < ilen; ++i) {
+// 		if (!chart.isDatasetVisible(i)) {
+// 			continue;
+// 		}
 
-		meta = chart.getDatasetMeta(i);
-		for (j = 0, jlen = meta.data.length; j < jlen; ++j) {
-			var element = meta.data[j];
-			if (!element.hasOwnProperty('_view')) {
-				continue;
-			}
-			if (!element._view.skip) {
-				handler(element);
-			}
-		}
-	}
-}
+// 		meta = chart.getDatasetMeta(i);
+// 		for (j = 0, jlen = meta.data.length; j < jlen; ++j) {
+// 			var element = meta.data[j];
+// 			if (!element.hasOwnProperty('_view')) {
+// 				continue;
+// 			}
+// 			if (!element._view.skip) {
+// 				handler(element);
+// 			}
+// 		}
+// 	}
+// }
 
 //  ACCESS LABELS AND DATASET ERROR (labelsArry empty etc)
   function sortLD(){
