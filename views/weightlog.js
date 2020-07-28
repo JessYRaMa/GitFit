@@ -1,15 +1,15 @@
+//global variables
 var labels = [];
 var dataSet = [];
 var users = [];
 var dataUse = [];
 var localUserName = window.localStorage.userName;
+$("#currentUser").attr("value", localUserName);
+var newUser = localUserName;
 
 //chart title
 var main = $(".title").html("<h3>" + "Welcome to " + "<b>" + localUserName + "</b>" + "'s Progress Log" + "</h3>");
 main.attr("class", "mb-5");
-
-$("#currentUser").attr("value", localUserName);
-var newUser = localUserName;
 
 function getPostData() {
     $.get("/api/weight", function(data) {
@@ -19,13 +19,6 @@ function getPostData() {
             if(data[i].username === newUser){
             labels.push(JSON.stringify(moment(data[i].logged_at).format('L')).slice(1,-1));
             dataSet.push(parseInt(JSON.stringify(data[i].weight)));
-
-            // //experimental sort
-            // var sortlabel = bubbleSort(labels);;
-            // console.log("sorted labels",sortlabel);
-            // var sortdata = bubbleSort(dataSet);
-            // console.log("sorted data",sortdata);
-            
             };
             if(users.indexOf(data[i].username) === -1){
                 users.push(data[i].username);
@@ -34,23 +27,15 @@ function getPostData() {
         };
         labels, dataSet = bubbleSort(labels, dataSet);
         myChart.update();
-        // DebugMe("getPostData");
-
-       //UserDropdown();
        resetGraph();
        createGraph();
-       dropDown(); 
-
-            // var sortlabel = bubbleSort(labels);
-            // console.log("sorted labels",sortlabel);
-            // for (var i=0; i< sortlabel.length; i++){
-            //     sortedLabels.push(sortlabel);
-            // }
-    
+       dropDown();
     });
   };
+  //onload getPostData
   getPostData();
 
+//populate the dropdown with dates available to remove  
   function dropDown(){
       $("#dataRemove").html('<option value="" disabled selected>Want to delete one?</option>');
     for(var i=0; i<labels.length; i++){
@@ -58,24 +43,17 @@ function getPostData() {
     };
 }
 
+//get post id
 function getId(){
     var toDelete = $("#dataRemove").val().trim();
     var newUser = localUserName;
-        console.log("datausearray", dataUse);
-
         for(var i=0; i<dataUse.length; i++){
-            console.log("id",dataUse[i].id);
-            console.log("username", dataUse[i].username);
-            console.log("logged", (moment(dataUse[i].logged_at).format('L')));
-            console.log("to delete", toDelete);
-            console.log("newUser", newUser);
             if(newUser == dataUse[i].username && toDelete == (moment(dataUse[i].logged_at).format('L'))){
                     return(dataUse[i].id);
             } 
         }
-
         return -1;
-};
+    };
 
 
  function createGraph(){
@@ -85,7 +63,7 @@ function getId(){
             if(data[i].username === currentUser){
                 labels.push(JSON.stringify(moment(data[i].logged_at).format('L')).slice(1,-1));
                 dataSet.push(parseInt(JSON.stringify(data[i].weight)));
-            dropDown();
+                dropDown();
             };
             if(users.indexOf(data[i].username) === -1){
                 users.push(data[i].username);
@@ -107,7 +85,7 @@ $("#deleteGraph").on("click", function(){
     resetGraph(); 
 });
 
-//chart creation
+//on load chart creation
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
@@ -320,7 +298,7 @@ function submitPost(newPost) {
      } else{
         addData();
         getPostData();
-
+//post to be submitted to the database
         var newPost = {
             username: newuser,
             logged_at: logged.val().trim(),
@@ -329,7 +307,7 @@ function submitPost(newPost) {
             age: newage.val().trim(),
           };
         $.post("/api/weight", newPost, function() {
-          console.log(newPost);
+        //   console.log(newPost);
           clearValues();
         });
      }
@@ -343,7 +321,7 @@ function submitPost(newPost) {
 //removal of data
 function removeData() {
     var toDelete = $("#dataRemove").val().trim();
-    console.log(toDelete);
+    // console.log(toDelete);
     var index = labels.indexOf(toDelete);
     var weightIndex = dataSet.indexOf(toDelete);
     if(weightIndex > -1){dataSet.splice(index,1)};
@@ -361,7 +339,7 @@ function deletePost(id) {
         dropDown();
         getPostData();
 
-        console.log("deleted");
+        // console.log("deleted");
         $.ajax({
             method: "DELETE",
             url: "/api/weight/" + id
@@ -400,63 +378,8 @@ function deletePost(id) {
     };
     return arr, arr2;
 }
-// function parseVisibleItems(chart, handler) {
-// 	var datasets = chart.data.datasets;
-// 	var meta, i, j, ilen, jlen;
 
-// 	for (i = 0, ilen = datasets.length; i < ilen; ++i) {
-// 		if (!chart.isDatasetVisible(i)) {
-// 			continue;
-// 		}
-
-// 		meta = chart.getDatasetMeta(i);
-// 		for (j = 0, jlen = meta.data.length; j < jlen; ++j) {
-// 			var element = meta.data[j];
-// 			if (!element.hasOwnProperty('_view')) {
-// 				continue;
-// 			}
-// 			if (!element._view.skip) {
-// 				handler(element);
-// 			}
-// 		}
-// 	}
-// }
-
-//  ACCESS LABELS AND DATASET ERROR (labelsArry empty etc)
-  function sortLD(){
-
-    DebugMe("sortLD()");
-
-    //   var labelArry = [];
-    //   var dataArry = [];
-      
-
-    //   for(let i = 0; i < labels.length; ++i){
-    //     labelArry.push(labels[i]);
-    //     dataArry.push(dataSet[i]);
-    //   }
-
-    //   for(let i = 0; i < labelArry.length-1; ++i){
-    //       for(let j = 0; j < labelArry.length- i - 1; ++j){
-    //           if(labelArry[j] > labelArry[j+1]){
-    //             var temp = labelArry[j]; 
-    //             labelArry[j] = labelArry[j+1]; 
-    //             labelArry[j+1] = temp; 
-
-    //             var temp2 = dataArry[j]; 
-    //             dataArry[j] = dataArry[j+1]; 
-    //             dataArry[j+1] = temp2; 
-    //           }
-    //       }
-    //   }
-
-    //   for(let i = 0; i < labels.length; ++i){
-    //       labels[i] = labelArry[i];
-    //       dataSet[i] = dataArry[i];
-    //   }
-
-  }
-
+//Debug function
 function DebugMe(location){
     var chartyData = myChart.data;
 
@@ -494,26 +417,3 @@ function DebugMe(location){
     "\t\t Idea5: ...\n", 
     "\n----------------------------------------------------------------------------\n");
 }
-
-// function sort(){
-//     arrayOfObj = labels.map(function(d, i) {
-//         return {
-//           label: d,
-//           data: dataSet[i] || 0
-//         };
-//       });
-      
-//       sortedArrayOfObj = arrayOfObj.sort(function(a, b) {
-//         return b.data - a.data;
-//       });
-      
-//       sortedArrayOfObj.forEach(function(d){
-//         newArrayLabel.push(d.label);
-//         newArrayData.push(d.data);
-//       });
-      
-//       console.log("new array",newArrayLabel);
-//       console.log("newdata" , newArrayData);      
-// };
-
-
