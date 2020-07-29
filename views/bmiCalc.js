@@ -9,12 +9,12 @@
         
 
         if (units == 'Imperial') {
-            var bmi1 = Math.floor(703 * weight / (height**2));
-            $('#yourBMI').append(bmi1);
+            var bmi1 = Math.floor(703 * weight/Math.pow(height,2));
+            $('#yourBMI').html(bmi1);
         }
         else if (units == 'Metric') {
-            var bmi2 = Math.floor(weight / (height**2));
-            $('#yourBMI').append(bmi2);
+            var bmi2 = Math.floor(10000 * weight/Math.pow(height,2));
+            $('#yourBMI').html(bmi2);
             }
             console.log(weightType, heightType, units,height, weight);
     });
