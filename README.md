@@ -1,5 +1,10 @@
 # GitFit
-GitFit by Jessica Marc Raffa Yssabel
+GitFit by JessYRaMa. Check out our individual GitHub Repositories!<br>
+[Jessica Vaiana-Cavanagh](https://github.com/jessicavc)<br>
+[Yssabel Pangilinan](https://github.com/YPangilinan)<br>
+[Rafael J](https://github.com/Raffaj1208)<br>
+[Marc Martinez](https://github.com/MarcM987)
+
 
 ## Project Description
 <p>Welcome to GitFit! Your newest fitness tracker! On our site you can create a profile with your age, height, and weight and try one of two things, the BMI Calculator, or our Weight Logger. When you use our Weight Logger, it will create a user profile in our database with the information you provided and a graph based on that data (using chart.js). There will also be inputs for you to log/edit/delete other dates and weights and the chart will update accordingly. </p>
