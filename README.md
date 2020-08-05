@@ -4,6 +4,8 @@ GitFit by Jessica Marc Raffa Yssabel
 ## Project Description
 <p>Welcome to GitFit! Your newest fitness tracker! On our site you can create a profile with your age, height, and weight and try one of two things, the BMI Calculator, or our Weight Logger. When you use our Weight Logger, it will create a user profile in our database with the information you provided and a graph based on that data (using chart.js). There will also be inputs for you to log/edit/delete other dates and weights and the chart will update accordingly. </p>
 
+Look at it in action! https://gitfit-jessyrama.herokuapp.com/
+
 ![alt text](https://github.com/JessYRaMa/GitFit/blob/master/GitFit_Page_1.jpg?raw=true)
 
 <br><br>
