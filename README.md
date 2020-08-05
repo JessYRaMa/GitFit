@@ -14,6 +14,9 @@ GitFit by JessYRaMa. Check out our individual GitHub Repositories!<br>
 ### See it in action!
 *GitFit* is deployed to Heroku. Please check it out [here](https://gitfit-jessyrama.herokuapp.com/)
 
+### Our Motivation
+Quarantine 2020 inspired us to create this app. Throughout this time, we've been eating more and working out less. We were motivated to create something that would motivate us to get back on track with our fitness in a fun and creative way. 
+
 ### How was this app created?
 The technologies used to create this app are:
 - JavaScript
